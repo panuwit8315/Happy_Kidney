@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: fa56a43915a3e5c4c8aca036b286c4f2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - FC Muffin
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: a5280c1abdca00848b4d59b051b37c17, type: 3}
+  - {fileID: 12800000, guid: 561e22baf6b248841bf2ca0f49128f7c, type: 3}
+  - {fileID: 12800000, guid: dd5ab21adc46f244fa97817ec2b5536a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
