@@ -115,7 +115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100.2, y: -6.7}
+  m_AnchoredPosition: {x: -100.2, y: -6.700001}
   m_SizeDelta: {x: 289.11, y: 93.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &105245681023766561
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 105245681675676245}
   timeText: {fileID: 105245681023766566}
-  fridgeText: {fileID: 0}
+  fridgeText: {fileID: 105245681843908011}
   comboSlider: {fileID: 5347189966382488065}
   rubbishBinAnim: {fileID: 105245682138395923}
   itemsObj:
@@ -679,8 +679,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38, y: 41.1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 38, y: 42.916965}
+  m_SizeDelta: {x: 100, y: 68.349}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &105245681843908010
 CanvasRenderer:
@@ -717,7 +717,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 6
     m_MaxSize: 60
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
