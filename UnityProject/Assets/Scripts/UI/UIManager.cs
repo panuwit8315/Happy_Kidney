@@ -18,68 +18,130 @@ public class UIManager : MonoBehaviour
     private UIGamePlay uiGamePlay;
     private UILobby uiLobby;
     private UIEndGame uiEndGame;
+    private UISelectMode uiSelectMode;
+    private UIHint uiHint;
+    private UILeaderboard uiLeaderboard;
+    private UIPause uiPause;
+    private UITutorial uiTutorial;
     public UIGamePlay UIGamePlay() { if (uiGamePlay == null) OpenGamePlayUI(); return uiGamePlay; }
     public UILobby UILobby() { if (uiLobby == null) OpenLobbyUI(); return uiLobby; }
-    public UIEndGame UIEndGame() { if (uiEndGame == null) OpenLobbyUI(); return uiEndGame; }
-    
+    public UIEndGame UIEndGame() { if (uiEndGame == null) OpenEndGameUI(); return uiEndGame; }
+    public UISelectMode UISelectMode() { if (uiSelectMode == null) OpenSelectModeUI(); return uiSelectMode; }
+    public UIHint UIHint() { if (uiHint == null) OpenHinsUI(); return uiHint; }
+    public UILeaderboard UILeaderboard() { if (uiLeaderboard == null) OpenLeaderboardUI(); return uiLeaderboard; }
+    public UIPause UIPause() { if (uiPause == null) OpenPauseUI(); return uiPause; }
+    public UITutorial UITutorial() { if (uiTutorial == null) OpenTutorialUI(); return uiTutorial; }
+
     public void OpenGamePlayUI()
     {
-        GameObject g;
-        if(GetComponentInChildren<UIGamePlay>() != null)
-        {
-            g = GetComponentInChildren<UIGamePlay>().gameObject;
-        }
-        else
-        {
-            g = SpawnObj("Prefabs/UI/UIGamePlay");
-        }
+        if (GetComponentInChildren<UIGamePlay>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UIGamePlay");
         if (g == null) return;
         g.GetComponent<UIGamePlay>().Open();
         uiGamePlay = g.GetComponent<UIGamePlay>();
     }
-    public void CloseGamePlayUI()
+    public void CloseUI(UIGamePlay ui)
     {
         uiGamePlay = null;
     }
 
     public void OpenLobbyUI()
     {
-        GameObject g;
-        if (GetComponentInChildren<UILobby>() != null)
-        {
-            g = GetComponentInChildren<UILobby>().gameObject;
-        }
-        else
-        {
-            g = SpawnObj("Prefabs/UI/UILobby");
-        }
+        if (GetComponentInChildren<UILobby>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UILobby");
         if (g == null) return;
         g.GetComponent<UILobby>().Open();
         uiLobby = g.GetComponent<UILobby>();
     }
-    public void CloseLobbyUI()
+    public void CloseUI(UILobby ui)
     {
         uiLobby = null;
     }
 
     public void OpenEndGameUI()
     {
-        GameObject g;
-        if (GetComponentInChildren<UIEndGame>() != null)
-        {
-            g = GetComponentInChildren<UIEndGame>().gameObject;
-        }
-        else
-        {
-            g = SpawnObj("Prefabs/UI/UIEndGame");
-        }
+        if (GetComponentInChildren<UIEndGame>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UIEndGame");
         if (g == null) return;
         g.GetComponent<UIEndGame>().Open();
         uiEndGame = g.GetComponent<UIEndGame>();
     }
-    public void CloseEndGameUI()
+    public void CloseUI(UIEndGame ui)
     {
         uiEndGame = null;
+    }
+
+    public void OpenSelectModeUI()
+    {      
+        if (GetComponentInChildren<UISelectMode>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UISelectMode");
+        if (g == null) return;
+        g.GetComponent<UISelectMode>().Open();
+        uiSelectMode = g.GetComponent<UISelectMode>();
+    }
+    public void CloseUI(UISelectMode ui)
+    {
+        uiSelectMode = null;
+    }
+
+    public void OpenHinsUI()
+    {
+        if (GetComponentInChildren<UIHint>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UIHins");
+        if (g == null) return;
+        g.GetComponent<UIHint>().Open();
+        uiHint = g.GetComponent<UIHint>();
+    }
+    public void CloseUI(UIHint ui)
+    {
+        uiHint = null;
+    }
+
+    public void OpenLeaderboardUI()
+    {
+        if (GetComponentInChildren<UILeaderboard>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UILeaderboard");
+        if (g == null) return;
+        g.GetComponent<UILeaderboard>().Open();
+        uiLeaderboard = g.GetComponent<UILeaderboard>();
+    }
+    public void CloseUI(UILeaderboard ui)
+    {
+        uiLeaderboard = null;
+    }
+
+    public void OpenPauseUI()
+    {
+        if (GetComponentInChildren<UIPause>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UIPause");
+        if (g == null) return;
+        g.GetComponent<UIPause>().Open();
+        uiPause = g.GetComponent<UIPause>();
+    }
+    public void CloseUI(UIPause ui)
+    {
+        uiPause = null;
+    }
+
+    public void OpenTutorialUI()
+    {
+        if (GetComponentInChildren<UITutorial>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UITutorial");
+        if (g == null) return;
+        g.GetComponent<UITutorial>().Open();
+        uiTutorial = g.GetComponent<UITutorial>();
+    }
+    public void CloseUI(UITutorial ui)
+    {
+        uiTutorial = null;
     }
 
     private GameObject SpawnObj(string path)

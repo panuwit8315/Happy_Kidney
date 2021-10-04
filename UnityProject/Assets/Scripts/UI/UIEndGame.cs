@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIEndGame : MonoBehaviour
+public class UIEndGame : MonoBehaviour, IUI
 {
     [SerializeField] Text scoreText;
 
@@ -30,12 +30,12 @@ public class UIEndGame : MonoBehaviour
     public void Close()
     {
         GetComponent<Animator>().SetTrigger("MoveOut");
-        Invoke("DestroyObj", 3);
+        Invoke("DestroyObj", 1);
     }
 
-    private void DestroyObj()
+    public void DestroyObj()
     {
-        UIManager.GetUI().CloseEndGameUI();
+        UIManager.GetUI().CloseUI(this);
         Destroy(gameObject);
     }
 }

@@ -38,7 +38,9 @@ public class FridgeSpawner : MonoBehaviour
     public void LetSpawner(PlayDifference diff)
     {
         this.diff = diff;
-        GameObject g = Instantiate(fridgePrefab,spawnPos.position,spawnPos.rotation);
+        GameObject g;
+        if (currentFridgeObj == null) g = Instantiate(fridgePrefab, spawnPos.position, spawnPos.rotation);
+        else g = currentFridgeObj;
         currentFridgeObj = g;
         fridgeCount++;
         UI.UIGamePlay().SetFridgeUI(fridgeCount);
@@ -68,7 +70,10 @@ public class FridgeSpawner : MonoBehaviour
         if (add > 0 && useBonus) total = add * (int)bonusType;
         score += total;
         if (score < 0) score = 0;
-        UI.UIGamePlay().SetScoreUI(score);
+        string showStr = "";
+        if (add > 0) showStr = "+" + add;
+        else if (add < 0) showStr = add.ToString();
+        UI.UIGamePlay().SetScoreUI(score, showStr);
     }
 
     public void AddScoreAfterDropIngredient(IngredientType type)
@@ -111,7 +116,7 @@ public class FridgeSpawner : MonoBehaviour
         combo = 0;
         stepComboComplete = 0;
         SetNewMaxCombo();
-        DefaultBonus();
+        SetBonus(BonusType.X1);
         UI.UIGamePlay().SetSliderValue(combo);
     }
 
@@ -130,17 +135,19 @@ public class FridgeSpawner : MonoBehaviour
         ComboDifference comboDiff = Data.GetComboDiff(stepComboComplete);
         Game.GetInstance().timer.AddTime(comboDiff.addTime);
         AddScore(comboDiff.addScore);
-        bonusType = comboDiff.bonusType;
+        SetBonus(comboDiff.bonusType);
         //Invoke("DefaultBonus", 5);
 
         stepComboComplete++;
         SetNewMaxCombo();
     }
 
-    void DefaultBonus()
+    void SetBonus(BonusType bonus)
     {
-        bonusType = BonusType.X1;
+        bonusType = bonus;
+        UI.UIGamePlay().SetBonus(bonus);
     }
+
 
     public int GetScore()
     {

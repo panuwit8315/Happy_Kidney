@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Moseion
-  productName: Pick Them Out
+  companyName: Moseion Bu
+  productName: Happy Kidney
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -133,7 +133,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: 0.2
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -152,7 +152,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.Moseion.PickThemOut
+    Android: com.MoseionBu.HappyKidney
     Standalone: com.Moseion.PickThemOut
   buildNumber:
     Standalone: 0
@@ -270,7 +270,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 37a024e1db0802e4aac5d9755b745513, type: 3}
+      m_Icon: {fileID: 2800000, guid: 84a9fabdc4ac422409de8185607474ec, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

@@ -3,33 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UILobby : MonoBehaviour
+public class UILobby : MonoBehaviour, IUI
 {
     [SerializeField] Button startBtn;
-    [SerializeField] GameObject logo;
+    //[SerializeField] GameObject logo;
 
     Game game;
 
     public void Open()
     {
         game = Game.GetInstance();
-        startBtn.onClick.AddListener(() =>
+        startBtn?.onClick.AddListener(() =>
         {
-            game.StartGame(PlayDifference.NORMAL);
-
-            Close();
+            UIManager.GetUI().OpenSelectModeUI();
         });
     }
 
     public void Close()
     {
         GetComponent<Animator>().SetTrigger("MoveOut");
-        Invoke("DestroyObj",3);
+        Invoke("DestroyObj",1);
     }
 
-    private void DestroyObj()
+    public void DestroyObj()
     {
-        UIManager.GetUI().CloseLobbyUI();
+        UIManager.GetUI().CloseUI(this);
         Destroy(gameObject);
     }
 }

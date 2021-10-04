@@ -171,7 +171,8 @@ public class Fridge : MonoBehaviour //default
         if(transform.position.x < -10)
         {
             moveState = MoveState.MOVEDOUT;
-            if(nextSpawn) Game.GetInstance().fridgeSpawner.LetSpawner();
+            Game.GetInstance().fridgeSpawner.currentFridgeObj = null;
+            if (nextSpawn) Game.GetInstance().fridgeSpawner.LetSpawner();
             Destroy(gameObject);
         }
     }

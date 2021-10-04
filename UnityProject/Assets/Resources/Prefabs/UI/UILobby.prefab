@@ -185,7 +185,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startBtn: {fileID: 1256466962757306189}
-  logo: {fileID: 1256466962043355301}
 --- !u!95 &1780878959948679831
 Animator:
   serializedVersion: 3
