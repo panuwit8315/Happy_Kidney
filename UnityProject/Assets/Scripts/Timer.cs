@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class Timer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) //debug
         {
             timer = 5;
-            print("R");
+            print("Press [R]: Set timer = 5"); //OnEditor
         }
         if (isRunTime && timer > 0)
         {
@@ -43,6 +43,7 @@ public class Timer : MonoBehaviour
     {
         timer += second;
         UI.UIGamePlay().SetTimeUI(GetTimeStr());
+        UI.UIGamePlay().SpawnAddTimeNotif("+" + second + " วินาที");
     }
 
     public void SesetTime()
@@ -64,8 +65,8 @@ public class Timer : MonoBehaviour
 
     private string GetTimeStr() //Convert time float to time 00:00 format
     {
-        int minute = minute = (int)timer / 60;
-        int secound = secound = (int)timer % 60;
+        int minute = (int)timer / 60;
+        int secound = (int)timer % 60;
         return minute.ToString("00") + ":" + secound.ToString("00");
     }
 

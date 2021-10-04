@@ -71,8 +71,8 @@ public class FridgeSpawner : MonoBehaviour
         score += total;
         if (score < 0) score = 0;
         string showStr = "";
-        if (add > 0) showStr = "+" + add;
-        else if (add < 0) showStr = add.ToString();
+        if (total > 0) showStr = "+" + total;
+        else if (total < 0) showStr = total.ToString();
         UI.UIGamePlay().SetScoreUI(score, showStr);
     }
 

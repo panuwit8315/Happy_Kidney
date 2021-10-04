@@ -12,7 +12,8 @@ public class UIGamePlay : MonoBehaviour, IUI
     [SerializeField] Animator rubbishBinAnim;
     [SerializeField] GameObject[] itemsObj;
     [SerializeField] GameObject bonusPanel;
-    [SerializeField] GameObject spawnScorePos;
+    [SerializeField] GameObject addScoreNoftPos;
+    [SerializeField] GameObject addTimeNotfPos;
     [SerializeField] Button pauseBtn;
     GameObject currentSpawnScore;
     List<string> scoreQ = new List<string>();
@@ -102,10 +103,10 @@ public class UIGamePlay : MonoBehaviour, IUI
         bonusPanel.SetActive((int)bonus != 1);
     }
 
-    void SpawnScoreNotif()
+    private void SpawnScoreNotif()
     {
         if (scoreQ.Count < 1 || currentSpawnScore != null) return;
-        GameObject g = Instantiate(spawnScorePos, spawnScorePos.GetComponentInParent<RectTransform>());
+        GameObject g = Instantiate(addScoreNoftPos, addScoreNoftPos.GetComponentInParent<RectTransform>());
         g.SetActive(true);
         g.GetComponent<Text>().text = scoreQ[0];
         scoreQ.RemoveAt(0);
@@ -115,8 +116,20 @@ public class UIGamePlay : MonoBehaviour, IUI
 
     void ClearScoreNotif()
     {
-        Destroy(currentSpawnScore);
-        currentSpawnScore = null;
+        if (currentSpawnScore != null)
+        {
+            Destroy(currentSpawnScore);
+            currentSpawnScore = null;
+        }
+        
         SpawnScoreNotif();
+    }
+
+    public void SpawnAddTimeNotif(string text)
+    {        
+        GameObject g = Instantiate(addTimeNotfPos, addTimeNotfPos.GetComponentInParent<RectTransform>());
+        g.SetActive(true);
+        g.GetComponent<Text>().text = text;
+        Destroy(g,1);
     }
 }

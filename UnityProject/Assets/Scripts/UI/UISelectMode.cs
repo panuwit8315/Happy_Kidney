@@ -8,6 +8,7 @@ public class UISelectMode : MonoBehaviour, IUI
     [SerializeField] Button closeBtn;
     [SerializeField] Button easyBtn;
     [SerializeField] Button hardBtn;
+    bool isBtnAlredy = true;
     public void Open()
     {
         Game game = Game.GetInstance();
@@ -17,15 +18,23 @@ public class UISelectMode : MonoBehaviour, IUI
         });
         easyBtn?.onClick.AddListener(() =>
         {
-            game.StartGame(PlayDifference.NORMAL);
-            UIManager.GetUI().UILobby().Close();
-            Close();
+            if (isBtnAlredy)
+            {
+                isBtnAlredy = false;
+                game.StartGame(PlayDifference.NORMAL);
+                UIManager.GetUI().UILobby().Close();
+                Close();
+            }            
         });
         hardBtn?.onClick.AddListener(() =>
         {
-            game.StartGame(PlayDifference.HARD);
-            UIManager.GetUI().UILobby().Close();
-            Close();
+            if (isBtnAlredy)
+            {
+                isBtnAlredy = false;
+                game.StartGame(PlayDifference.HARD);
+                UIManager.GetUI().UILobby().Close();
+                Close();
+            }         
         });
     }
 
