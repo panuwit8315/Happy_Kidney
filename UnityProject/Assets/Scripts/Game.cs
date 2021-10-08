@@ -28,11 +28,11 @@ public class Game : MonoBehaviour
 
     public void StartGame(PlayDifference playDiff)
     {
-        ui.OpenGamePlayUI();
         timer.SesetTime();
         timer.SetRunTime(true);
         fridgeSpawner.ResetSpawner();
-        fridgeSpawner.LetSpawner(playDiff);    
+        fridgeSpawner.LetSpawner(playDiff);
+        ui.OpenGamePlayUI();// playDiff);
     }
 
     public void EndGame()

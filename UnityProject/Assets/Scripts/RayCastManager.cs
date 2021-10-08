@@ -59,9 +59,13 @@ public class RayCastManager : MonoBehaviour
                 }
                 else if (obj.CompareTag(itemTag))
                 {
-                    float newX = mousePos.x + xOfset;
-                    float newY = mousePos.y + yOfset;
-                    obj.GetComponent<ItemBtn>().currentItemObj.GetComponent<ItemObj>().OnDrag(newX, newY);
+                    ItemBtn btn = obj.GetComponent<ItemBtn>();
+                    if (btn.enableItem)
+                    {
+                        float newX = mousePos.x + xOfset;
+                        float newY = mousePos.y + yOfset;
+                        btn.currentItemObj.GetComponent<ItemObj>().OnDrag(newX, newY);
+                    }                  
                 }
             }          
         }
@@ -90,5 +94,14 @@ public class RayCastManager : MonoBehaviour
             currentHitObj = null;
         }
         
+    }
+
+    public void Clear()
+    {
+        if(currentHitObj != null)
+        {
+            Destroy(currentHitObj);
+            currentHitObj = null;
+        }
     }
 }

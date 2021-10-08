@@ -72,6 +72,11 @@ public class Timer : MonoBehaviour
 
     void EndGame()
     {
+        if(game.fridgeSpawner.GetFridgeCount() >= PlayerPrefs.GetInt("HighestFridgeLv", 0))
+        {
+            PlayerPrefs.SetInt("HighestFridgeLv", game.fridgeSpawner.GetFridgeCount());
+        }
+        game.GetComponent<RayCastManager>().Clear();
         game.EndGame();
     }
 }

@@ -8,6 +8,7 @@ public class UISelectMode : MonoBehaviour, IUI
     [SerializeField] Button closeBtn;
     [SerializeField] Button easyBtn;
     [SerializeField] Button hardBtn;
+    [SerializeField] GameObject lockHardModeTx;
     bool isBtnAlredy = true;
     public void Open()
     {
@@ -26,16 +27,27 @@ public class UISelectMode : MonoBehaviour, IUI
                 Close();
             }            
         });
-        hardBtn?.onClick.AddListener(() =>
+
+        int highestFridgeLv = PlayerPrefs.GetInt("HighestFridgeLv",0);
+        if (highestFridgeLv > 25)
         {
-            if (isBtnAlredy)
+            lockHardModeTx.SetActive(false);
+            hardBtn?.onClick.AddListener(() =>
             {
-                isBtnAlredy = false;
-                game.StartGame(PlayDifference.HARD);
-                UIManager.GetUI().UILobby().Close();
-                Close();
-            }         
-        });
+                if (isBtnAlredy)
+                {
+                    isBtnAlredy = false;
+                    game.StartGame(PlayDifference.HARD);
+                    UIManager.GetUI().UILobby().Close();
+                    Close();
+                }
+            });
+        }
+        else
+        {
+            hardBtn.interactable = false;
+            lockHardModeTx.SetActive(true);
+        }
     }
 
     public void Close()

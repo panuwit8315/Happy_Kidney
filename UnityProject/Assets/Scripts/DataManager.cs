@@ -40,6 +40,22 @@ public class FridgeShelf
     public FridgeShelfStyle style;
 }
 
+[System.Serializable]
+public class LevelUnlockItem
+{
+    public int unlockFire;
+    public int unlockBroom;
+    public int unlockCrowbar;
+
+    public LevelUnlockItem() { unlockFire = 0; unlockBroom = 0; unlockCrowbar = 0; }
+    public LevelUnlockItem(int unlockFire, int unlockBroom, int unlockCrowbar) 
+    { 
+        this.unlockFire = unlockFire; 
+        this.unlockBroom = unlockBroom; 
+        this.unlockCrowbar = unlockCrowbar; 
+    }
+}
+
 public enum IngredientType {SHOULD_NOT_EAT, CAN_EAT}
 public enum PlayDifference { NORMAL, HARD}
 public enum ItemType { FIRE, BROOM, CROWBAR }
@@ -111,5 +127,20 @@ public class DataManager : MonoBehaviour
         }
         Debug.LogError("ไม่มีชั้นวางแบบนี้ [" + style +"] ในฐานข้อมูล");
         return fridgeShelfs[0];
+    }
+
+    public LevelUnlockItem GetLevelUnlockItem()
+    {
+        LevelUnlockItem unlockItem = new LevelUnlockItem();
+        for(int i = 0; i < normalDifLv.Count; i++)
+        {
+            if (normalDifLv[i].obstacle_Ice > 0 && unlockItem.unlockFire == 0) unlockItem.unlockFire = i;
+            if (normalDifLv[i].obstacle_SpiderWeb > 0 && unlockItem.unlockBroom == 0) unlockItem.unlockBroom = i;
+            if (normalDifLv[i].obstacle_WoodenBoard > 0 && unlockItem.unlockCrowbar == 0) unlockItem.unlockCrowbar = i;
+            if (unlockItem.unlockFire > 0 && unlockItem.unlockBroom > 0 && unlockItem.unlockCrowbar > 0) return unlockItem;
+        }
+
+        Debug.LogError("GetLevelUnlockItem In DataManager Item:");
+        return unlockItem;
     }
 }

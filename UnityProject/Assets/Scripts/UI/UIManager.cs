@@ -23,7 +23,7 @@ public class UIManager : MonoBehaviour
     private UILeaderboard uiLeaderboard;
     private UIPause uiPause;
     private UITutorial uiTutorial;
-    public UIGamePlay UIGamePlay() { if (uiGamePlay == null) OpenGamePlayUI(); return uiGamePlay; }
+    public UIGamePlay UIGamePlay() { if (uiGamePlay == null) OpenGamePlayUI(); return uiGamePlay; } //Game.GetInstance().fridgeSpawner.diff
     public UILobby UILobby() { if (uiLobby == null) OpenLobbyUI(); return uiLobby; }
     public UIEndGame UIEndGame() { if (uiEndGame == null) OpenEndGameUI(); return uiEndGame; }
     public UISelectMode UISelectMode() { if (uiSelectMode == null) OpenSelectModeUI(); return uiSelectMode; }
@@ -32,13 +32,13 @@ public class UIManager : MonoBehaviour
     public UIPause UIPause() { if (uiPause == null) OpenPauseUI(); return uiPause; }
     public UITutorial UITutorial() { if (uiTutorial == null) OpenTutorialUI(); return uiTutorial; }
 
-    public void OpenGamePlayUI()
+    public void OpenGamePlayUI()//PlayDifference currentDiff)
     {
         if (GetComponentInChildren<UIGamePlay>() != null) return;
 
         GameObject g = SpawnObj("Prefabs/UI/UIGamePlay");
         if (g == null) return;
-        g.GetComponent<UIGamePlay>().Open();
+        g.GetComponent<UIGamePlay>().Open();// currentDiff);
         uiGamePlay = g.GetComponent<UIGamePlay>();
     }
     public void CloseUI(UIGamePlay ui)

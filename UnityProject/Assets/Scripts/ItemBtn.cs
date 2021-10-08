@@ -7,6 +7,7 @@ public class ItemBtn : MonoBehaviour
     GameObject itemObjPrefab;
     public GameObject currentItemObj;
     [SerializeField] ItemType itemType;
+    public bool enableItem = false;
 
     private void Start()
     {
@@ -15,6 +16,8 @@ public class ItemBtn : MonoBehaviour
 
     public void SpawnItemObj()
     {
+        if (!enableItem) return;
+
         currentItemObj = Instantiate(itemObjPrefab, transform);
         currentItemObj.GetComponent<ItemObj>().SetType(itemType);
     }
@@ -30,5 +33,11 @@ public class ItemBtn : MonoBehaviour
 
         Destroy(currentItemObj);
         currentItemObj = null;
+    }
+
+    public void EnableItem()
+    {
+        enableItem = true;
+        GetComponent<UnityEngine.UI.Image>().color = Color.white;
     }
 }

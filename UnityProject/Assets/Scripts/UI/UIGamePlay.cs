@@ -8,6 +8,7 @@ public class UIGamePlay : MonoBehaviour, IUI
     [SerializeField] Text scoreText;
     [SerializeField] Text timeText;
     [SerializeField] Text fridgeText;
+    [SerializeField] LevelUnlockItem lvUnlockItem;
     [SerializeField] Slider comboSlider;
     [SerializeField] Animator rubbishBinAnim;
     [SerializeField] GameObject[] itemsObj;
@@ -15,7 +16,7 @@ public class UIGamePlay : MonoBehaviour, IUI
     [SerializeField] GameObject addScoreNoftPos;
     [SerializeField] GameObject addTimeNotfPos;
     [SerializeField] Button pauseBtn;
-    GameObject currentSpawnScore;
+    bool nextSpawnScoreNotf = true;
     List<string> scoreQ = new List<string>();
 
     //Game game;
@@ -26,6 +27,17 @@ public class UIGamePlay : MonoBehaviour, IUI
         {
             UIManager.GetUI().OpenPauseUI();
         });
+
+        PlayDifference currentDiff = Game.GetInstance().fridgeSpawner.diff;print(currentDiff);
+        if (currentDiff == PlayDifference.NORMAL)
+        {
+            lvUnlockItem = Game.GetInstance().dataManager.GetLevelUnlockItem();
+        }
+        else
+        {
+            lvUnlockItem = new LevelUnlockItem(1, 1, 1);
+            print("OpenUIGamPlay"+currentDiff);
+        }
     }
     public void Close()
     {
@@ -57,6 +69,23 @@ public class UIGamePlay : MonoBehaviour, IUI
     public void SetFridgeUI(int fridgeCount)
     {
         fridgeText.text = fridgeCount.ToString();
+        SetActiveItemByFridgeLv(fridgeCount);
+    }
+
+    void SetActiveItemByFridgeLv(int fridgeLv)
+    {
+        if(fridgeLv == lvUnlockItem.unlockFire)
+        {
+            itemsObj[0].GetComponent<ItemBtn>().EnableItem();
+        }
+        if (fridgeLv == lvUnlockItem.unlockBroom)
+        {
+            itemsObj[1].GetComponent<ItemBtn>().EnableItem();
+        }
+        if (fridgeLv == lvUnlockItem.unlockCrowbar)
+        {
+            itemsObj[2].GetComponent<ItemBtn>().EnableItem();
+        }
     }
 
     public void MoveInRubbishBin()
@@ -105,24 +134,20 @@ public class UIGamePlay : MonoBehaviour, IUI
 
     private void SpawnScoreNotif()
     {
-        if (scoreQ.Count < 1 || currentSpawnScore != null) return;
+        if (scoreQ.Count < 1 || !nextSpawnScoreNotf) return; //|| currentScoreNotf.Count > 1
+
+        nextSpawnScoreNotf = false;
         GameObject g = Instantiate(addScoreNoftPos, addScoreNoftPos.GetComponentInParent<RectTransform>());
         g.SetActive(true);
         g.GetComponent<Text>().text = scoreQ[0];
         scoreQ.RemoveAt(0);
-        currentSpawnScore = g;
-        Invoke("ClearScoreNotif", 1);
+        Invoke("ScoreNotfDelay", 0.4f);
+        Invoke("SpawnScoreNotif", 0.5f);     
     }
 
-    void ClearScoreNotif()
+    void ScoreNotfDelay()
     {
-        if (currentSpawnScore != null)
-        {
-            Destroy(currentSpawnScore);
-            currentSpawnScore = null;
-        }
-        
-        SpawnScoreNotif();
+        nextSpawnScoreNotf = true;
     }
 
     public void SpawnAddTimeNotif(string text)
@@ -130,6 +155,6 @@ public class UIGamePlay : MonoBehaviour, IUI
         GameObject g = Instantiate(addTimeNotfPos, addTimeNotfPos.GetComponentInParent<RectTransform>());
         g.SetActive(true);
         g.GetComponent<Text>().text = text;
-        Destroy(g,1);
+        Destroy(g, 1f);
     }
 }

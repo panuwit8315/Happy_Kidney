@@ -593,6 +593,10 @@ MonoBehaviour:
   scoreText: {fileID: 105245681675676245}
   timeText: {fileID: 105245681023766566}
   fridgeText: {fileID: 105245681843908011}
+  lvUnlockItem:
+    unlockFire: 0
+    unlockBroom: 0
+    unlockCrowbar: 0
   comboSlider: {fileID: 5347189966382488065}
   rubbishBinAnim: {fileID: 105245682138395923}
   itemsObj:
@@ -1349,6 +1353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItemObj: {fileID: 0}
   itemType: 0
+  enableItem: 1
 --- !u!1 &5347189966340359795
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,6 +2272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItemObj: {fileID: 0}
   itemType: 2
+  enableItem: 1
 --- !u!1 &7539770691961788496
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,3 +2495,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentItemObj: {fileID: 0}
   itemType: 1
+  enableItem: 1

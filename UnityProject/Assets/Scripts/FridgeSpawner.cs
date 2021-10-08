@@ -59,8 +59,9 @@ public class FridgeSpawner : MonoBehaviour
         combo = 0;
         stepComboComplete = 0;
         SetNewMaxCombo();
+        SetBonus(BonusType.X1);
         UI.UIGamePlay().SetScoreUI(score);
-        UI.UIGamePlay().SetFridgeUI(fridgeCount);
+        //UI.UIGamePlay().SetFridgeUI(fridgeCount);
         UI.UIGamePlay().SetSliderValue(combo);
     }
 
