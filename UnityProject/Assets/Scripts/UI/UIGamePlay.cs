@@ -17,9 +17,7 @@ public class UIGamePlay : MonoBehaviour, IUI
     [SerializeField] GameObject addTimeNotfPos;
     [SerializeField] Button pauseBtn;
     bool nextSpawnScoreNotf = true;
-    List<string> scoreQ = new List<string>();
-
-    //Game game;
+    List<string> scoreQ = new List<string>();    
 
     public void Open()
     {

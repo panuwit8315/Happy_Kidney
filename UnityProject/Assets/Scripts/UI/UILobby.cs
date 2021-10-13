@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class UILobby : MonoBehaviour, IUI
 {
     [SerializeField] Button startBtn;
+    [SerializeField] Button settingBtn;    
+
     //[SerializeField] GameObject logo;
 
-    Game game;
+    Game game;    
 
     public void Open()
     {
@@ -16,6 +18,10 @@ public class UILobby : MonoBehaviour, IUI
         startBtn?.onClick.AddListener(() =>
         {
             UIManager.GetUI().OpenSelectModeUI();
+        });
+        settingBtn?.onClick.AddListener(() =>
+        {
+            UIManager.GetUI().OpenPauseUI();            
         });
     }
 

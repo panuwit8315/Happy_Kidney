@@ -153,7 +153,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.MoseionBu.HappyKidney
-    Standalone: com.Moseion.PickThemOut
+    Standalone: com.MoseionBu.HappyKidney
   buildNumber:
     Standalone: 0
     iPhone: 0
