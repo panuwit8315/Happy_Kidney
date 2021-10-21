@@ -13,8 +13,10 @@ public class UISelectMode : MonoBehaviour, IUI
     public void Open()
     {
         Game game = Game.GetInstance();
+        SoundManager sound = SoundManager.GetInstance();
         closeBtn?.onClick.AddListener(() =>
         {
+            sound.PlaySFXOneShot(SfxClipName.CLICK02);
             Close();
         });
         easyBtn?.onClick.AddListener(() =>
@@ -22,6 +24,7 @@ public class UISelectMode : MonoBehaviour, IUI
             if (isBtnAlredy)
             {
                 isBtnAlredy = false;
+                sound.PlaySFXOneShot(SfxClipName.CLICK02);
                 game.StartGame(PlayDifference.NORMAL);
                 UIManager.GetUI().UILobby().Close();
                 Close();
@@ -37,6 +40,7 @@ public class UISelectMode : MonoBehaviour, IUI
                 if (isBtnAlredy)
                 {
                     isBtnAlredy = false;
+                    sound.PlaySFXOneShot(SfxClipName.CLICK02);
                     game.StartGame(PlayDifference.HARD);
                     UIManager.GetUI().UILobby().Close();
                     Close();
@@ -53,7 +57,7 @@ public class UISelectMode : MonoBehaviour, IUI
     public void Close()
     {
         GetComponent<Animator>().SetTrigger("MoveOut");
-        Invoke("DestroyObj", 1);
+        Invoke("DestroyObj", 0.5f);
     }
 
     public void DestroyObj()

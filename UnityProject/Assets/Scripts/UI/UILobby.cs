@@ -10,17 +10,21 @@ public class UILobby : MonoBehaviour, IUI
 
     //[SerializeField] GameObject logo;
 
-    Game game;    
+    Game game;
 
     public void Open()
     {
         game = Game.GetInstance();
+        SoundManager sound = SoundManager.GetInstance();
+        game.scene = SceneState.LOBBY;
         startBtn?.onClick.AddListener(() =>
         {
+            sound.PlaySFXOneShot(SfxClipName.CLICK02);
             UIManager.GetUI().OpenSelectModeUI();
         });
         settingBtn?.onClick.AddListener(() =>
         {
+            sound.PlaySFXOneShot(SfxClipName.CLICK02);
             UIManager.GetUI().OpenPauseUI();            
         });
     }

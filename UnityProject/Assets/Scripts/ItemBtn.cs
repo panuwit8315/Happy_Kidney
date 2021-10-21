@@ -22,11 +22,6 @@ public class ItemBtn : MonoBehaviour
         currentItemObj.GetComponent<ItemObj>().SetType(itemType);
     }
 
-    /*public void OnDrag(float xPos, float yPos)
-    {
-        currentItemObj.GetComponent<ItemObj>().OnDrag(xPos, yPos);
-    }*/
-
     public void DestroyItemObj()
     {
         if (currentItemObj == null) return;

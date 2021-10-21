@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
-    float timer = 121;
+    float timer = 120;
     public bool isRunTime = false;
+    private bool isPlayTimeSfx = true;
 
     Game game;
     UIManager UI;
@@ -26,7 +27,12 @@ public class Timer : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            if (timer <= 0)
+            if(timer < 3.1f && isPlayTimeSfx)
+            {
+                SoundManager.GetInstance().PlaySFXOneShot(SfxClipName.TIMEOUT);
+                isPlayTimeSfx = false;
+            }
+            else if (timer <= 0)
             {
                 timer = 0;
                 isRunTime = false;
@@ -48,7 +54,8 @@ public class Timer : MonoBehaviour
 
     public void SesetTime()
     {
-        timer = 121;
+        timer = 120;
+        isPlayTimeSfx = true;
         UI.UIGamePlay().SetTimeUI(GetTimeStr());
     }
 

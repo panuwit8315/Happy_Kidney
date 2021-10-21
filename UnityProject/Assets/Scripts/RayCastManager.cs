@@ -33,9 +33,12 @@ public class RayCastManager : MonoBehaviour
                 }
                 else if (currentHitObj.CompareTag(itemTag))
                 {
-                    UIManager.GetUI().UIGamePlay().DisableColOtherItem(currentHitObj.name);
-                    Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(false);
-                    currentHitObj.GetComponent<ItemBtn>().SpawnItemObj();
+                    if (currentHitObj.GetComponent<ItemBtn>().enableItem)
+                    {
+                        UIManager.GetUI().UIGamePlay().DisableColOtherItem(currentHitObj.name);
+                        Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(false);
+                        currentHitObj.GetComponent<ItemBtn>().SpawnItemObj();
+                    }                   
                 }
             }
         }
@@ -85,11 +88,13 @@ public class RayCastManager : MonoBehaviour
             }
             else if (currentHitObj.CompareTag(itemTag))
             {
-                UIManager.GetUI().UIGamePlay().EnableColAllItem(true);
-                currentHitObj.GetComponent<ItemBtn>().currentItemObj.GetComponent<ItemObj>().ActiveItem();
-                currentHitObj.GetComponent<ItemBtn>().DestroyItemObj();              
-
-                Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(true);
+                if (currentHitObj.GetComponent<ItemBtn>().enableItem) 
+                {
+                    UIManager.GetUI().UIGamePlay().EnableColAllItem(true);
+                    currentHitObj.GetComponent<ItemBtn>().currentItemObj.GetComponent<ItemObj>().ActiveItem();
+                    currentHitObj.GetComponent<ItemBtn>().DestroyItemObj();
+                    Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(true);
+                }              
             }
             currentHitObj = null;
         }

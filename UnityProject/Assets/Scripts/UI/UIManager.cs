@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
     public UILobby UILobby() { if (uiLobby == null) OpenLobbyUI(); return uiLobby; }
     public UIEndGame UIEndGame() { if (uiEndGame == null) OpenEndGameUI(); return uiEndGame; }
     public UISelectMode UISelectMode() { if (uiSelectMode == null) OpenSelectModeUI(); return uiSelectMode; }
-    public UIHint UIHint() { if (uiHint == null) OpenHinsUI(); return uiHint; }
+    public UIHint UIHint() {  return uiHint; }
     public UILeaderboard UILeaderboard() { if (uiLeaderboard == null) OpenLeaderboardUI(); return uiLeaderboard; }
     public UIPause UIPause() { if (uiPause == null) OpenPauseUI(); return uiPause; }
     public UITutorial UITutorial() { if (uiTutorial == null) OpenTutorialUI(); return uiTutorial; }
@@ -88,11 +88,11 @@ public class UIManager : MonoBehaviour
         uiSelectMode = null;
     }
 
-    public void OpenHinsUI()
+    public void OpenHintUI()
     {
         if (GetComponentInChildren<UIHint>() != null) return;
 
-        GameObject g = SpawnObj("Prefabs/UI/UIHins");
+        GameObject g = SpawnObj("Prefabs/UI/UIHint");
         if (g == null) return;
         g.GetComponent<UIHint>().Open();
         uiHint = g.GetComponent<UIHint>();

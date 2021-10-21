@@ -7,6 +7,7 @@ public class FridgeSpawner : MonoBehaviour
     [SerializeField] GameObject fridgePrefab;
     [SerializeField] Transform spawnPos;
     [SerializeField] int fridgeCount = 0;
+    [SerializeField] int IngredientCount = 0;
     [SerializeField] int score = 0;
     [SerializeField] int combo = 0;
     [SerializeField] int maxCombo = 0;
@@ -15,9 +16,12 @@ public class FridgeSpawner : MonoBehaviour
     public PlayDifference diff;
 
     public GameObject currentFridgeObj;
+    public List<IngredientData> allCurrentIngredientNotEat = new List<IngredientData>();
+
     //Game game;
     UIManager UI;
     DataManager Data;
+    SoundManager sound;
 
     [Header("Setup Score")]
     [SerializeField] int correctIngredient;
@@ -30,14 +34,21 @@ public class FridgeSpawner : MonoBehaviour
         //game = Game.GetInstance();
         UI = UIManager.GetUI();
         Data = Game.GetInstance().dataManager;
+        sound = SoundManager.GetInstance();
     }
     public void LetSpawner()
     {
         LetSpawner(diff);
+        //Invoke("DelayFridgeSFX", 0.025f);
     }
+    void DelayFridgeSFX()
+    {
+        //sound.PlaySFXOneShot(SfxClipName.FRIDGECOMPLETE);
+    }
+
     public void LetSpawner(PlayDifference diff)
     {
-        this.diff = diff;
+        this.diff = diff;print("Spawn Set Diff");
         GameObject g;
         if (currentFridgeObj == null) g = Instantiate(fridgePrefab, spawnPos.position, spawnPos.rotation);
         else g = currentFridgeObj;
@@ -47,22 +58,43 @@ public class FridgeSpawner : MonoBehaviour
         g.GetComponent<Fridge>().Setup(fridgeCount,this.diff);
     }
 
+    public void AddDataIngredientNotEat(IngredientData ingredientData)
+    {
+        if(allCurrentIngredientNotEat.Contains(ingredientData)) return;
+        allCurrentIngredientNotEat.Add(ingredientData);
+        UI.UIGamePlay().SetHintNoft(true);
+    }
+
     public int GetFridgeCount()
     {
         return fridgeCount;
+    }
+    public void SetFridgeCount(int set)
+    {
+        fridgeCount = set;
+    }
+
+    public int GetIngredientCount()
+    {
+        return IngredientCount;
+    }
+    public void AddIngredientCount(int add)
+    {
+        IngredientCount += add;
     }
 
     public void ResetSpawner()
     {
         fridgeCount = 0;
+        IngredientCount = 0;
         score = 0;
         combo = 0;
         stepComboComplete = 0;
         SetNewMaxCombo();
         SetBonus(BonusType.X1);
         UI.UIGamePlay().SetScoreUI(score);
-        //UI.UIGamePlay().SetFridgeUI(fridgeCount);
         UI.UIGamePlay().SetSliderValue(combo);
+        allCurrentIngredientNotEat.Clear();
     }
 
     void AddScore(int add, bool useBonus = false)
@@ -109,16 +141,23 @@ public class FridgeSpawner : MonoBehaviour
         if(combo >= maxCombo)
         {
             CompleteCombo();
+            sound.PlaySFXOneShot(SfxClipName.COMBO);
+        }
+        else
+        {
+            sound.PlaySFXOneShot(SfxClipName.PICKOUTCORRECT02);
         }
     }
 
     void FailCombo()
     {
         combo = 0;
+        sound.PlaySFXOneShot(SfxClipName.PICKOUTFAIL01);
         stepComboComplete = 0;
         SetNewMaxCombo();
         SetBonus(BonusType.X1);
         UI.UIGamePlay().SetSliderValue(combo);
+        UI.UIGamePlay().ShowRedNoft();
     }
 
     void SetNewMaxCombo()

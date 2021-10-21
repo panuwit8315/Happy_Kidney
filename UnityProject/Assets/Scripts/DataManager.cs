@@ -81,6 +81,7 @@ public class DataManager : MonoBehaviour
         if (type == IngredientType.CAN_EAT) return ingredientData_CAN_EAT;
         else if (type == IngredientType.SHOULD_NOT_EAT) return ingredientData_SHOULD_NOT_EAT;
         return null;
+
     }
 
     public DifferenceLvData GetDifferenceByLy(int fridgeLv, PlayDifference diff)

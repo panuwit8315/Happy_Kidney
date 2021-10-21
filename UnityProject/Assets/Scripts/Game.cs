@@ -5,15 +5,18 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
-    public static Game game;
+    private static Game game;
     public static Game GetInstance(){return game;}
 
     public FridgeSpawner fridgeSpawner;
+    public RayCastManager rayCast;
     public DataManager dataManager;
     public Timer timer;
     public bool isTestting;
 
     UIManager ui;
+    public SceneState scene;
+    public PlayDifference diff; //use send to gameplayUI only
    
     private void Awake()
     {
@@ -28,10 +31,11 @@ public class Game : MonoBehaviour
 
     public void StartGame(PlayDifference playDiff)
     {
+        diff = playDiff;
         timer.SesetTime();
         timer.SetRunTime(true);
         fridgeSpawner.ResetSpawner();
-        fridgeSpawner.LetSpawner(playDiff);
+        fridgeSpawner.LetSpawner(diff);
         ui.OpenGamePlayUI();// playDiff);
     }
 
@@ -43,3 +47,5 @@ public class Game : MonoBehaviour
         ui.OpenEndGameUI();
     }
 }
+
+public enum SceneState {LOBBY, GAMEPLAY }

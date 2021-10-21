@@ -55,20 +55,28 @@ public class Fridge : MonoBehaviour //default
         }
 
         List<IngredientData> ingredientData_canEat = new List<IngredientData>();
-        foreach(IngredientData data in dataM.GetIngredientData(IngredientType.CAN_EAT))
+        //ingredientData_canEat = dataM.IngredientData_CAN_EAT;
+        foreach (IngredientData data in dataM.GetIngredientData(IngredientType.CAN_EAT))
         {
             ingredientData_canEat.Add(data);
         }
 
         List<IngredientData> ingredientData_notEat = new List<IngredientData>();
+        //ingredientData_notEat = dataM.IngredientData_SHOULD_NOT_EAT;
         foreach (IngredientData data in dataM.GetIngredientData(IngredientType.SHOULD_NOT_EAT))
         {
             ingredientData_notEat.Add(data);
         }
 
         int allSpawn = canEat + notEat;
-        if (allSpawn > spawnPoints.transform.childCount) Debug.LogWarning("จำนวนที่ต้อง spawn มากว่าจุด spawn: Lv" + fridgeLv);
-        for(int i = 0; i < allSpawn; i++)
+        if (allSpawn > spawnPoints.transform.childCount) 
+        {
+            allSpawn = spawnPoints.transform.childCount;
+            DebugCtrl.GetDebug().Log("จำนวนที่ต้อง spawn มากว่าจุด spawn: Lv" + fridgeLv);
+        }
+        
+        FridgeSpawner fridgeSpawner = Game.GetInstance().fridgeSpawner;
+        for (int i = 0; i < allSpawn; i++)
         {          
             if (i < canEat)
             {
@@ -80,6 +88,7 @@ public class Fridge : MonoBehaviour //default
             {
                 int random = Random.Range(0, ingredientData_notEat.Count);
                 SpawnIngredient(ingredientData_notEat[random],i);
+                fridgeSpawner.AddDataIngredientNotEat(ingredientData_notEat[random]); //ForUIHint
                 ingredientData_notEat.RemoveAt(random);
             }
         }
@@ -105,6 +114,21 @@ public class Fridge : MonoBehaviour //default
             obsCount++;
             SpwanObstacle(ObstacleType.WOODENBOARD, obsCount);
         }
+
+        //OpenHint
+        if(fridgeLv == 1 ) //&& playDiff == PlayDifference.NORMAL)
+        {
+            UIManager ui = UIManager.GetUI();
+            Game game = Game.GetInstance();
+            ui.OpenHintUI();
+            game.timer.isRunTime = false;           
+            ui.UIHint().closeBtn?.onClick.AddListener(() =>
+            {
+                ui.UIGamePlay().SetHintNoft(false);
+                game.timer.isRunTime = true;               
+            });
+        }
+        
     }
 
     private void Update()
@@ -189,7 +213,7 @@ public class Fridge : MonoBehaviour //default
         fridgeDoor.SetActive(false);
         SetOriginalPos();
         EnableAllIngredintCol(true);
-
+        if(fridgeLv==1) SoundManager.GetInstance().PlaySFXOneShot(SfxClipName.CLICK02);
         //Complete();
     }
 
@@ -206,7 +230,8 @@ public class Fridge : MonoBehaviour //default
         moveState = MoveState.MOVINGOUT;
         OnMovement += MoveOut;
         EnableAllIngredintCol(false);
-        Debug.Log("Fridge Complete");
+        FridgeSpawner spawner = Game.GetInstance().fridgeSpawner;
+        DebugCtrl.GetDebug().Log($"Complete Lv.{fridgeLv}  Score:{spawner.GetScore()} Ingre:{spawner.GetIngredientCount()}");
     }
 
     void SpawnIngredient(IngredientData data,int count)
@@ -270,7 +295,7 @@ public class Fridge : MonoBehaviour //default
         }
     }
 
-    public void CheckIngrediant()
+    public bool CheckIngrediant()
     {
         foreach(GameObject ingrediant in ingredientObjs)
         {
@@ -279,12 +304,14 @@ public class Fridge : MonoBehaviour //default
                 Ingredient ingre = ingrediant.GetComponent<Ingredient>();
                 if (ingre.GetIngrediantType() == IngredientType.SHOULD_NOT_EAT)
                 {
-                    if (!ingre.isDroped)return;                
+                    if (!ingre.isDroped)return false;                
                 }
             }
         }
 
+        
         Complete();
+        return true;
     }
 
     public void Out()

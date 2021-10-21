@@ -33,10 +33,30 @@ public class Ingredient : MonoBehaviour
         transform.position = originalPos;
         if (inRubbishBin)
         {
-            Game.GetInstance().fridgeSpawner.AddScoreAfterDropIngredient(type);
+            FridgeSpawner spawner = Game.GetInstance().fridgeSpawner;
+            spawner.AddScoreAfterDropIngredient(type);
             gameObject.SetActive(type == IngredientType.CAN_EAT);
             isDroped = type == IngredientType.SHOULD_NOT_EAT;
-            if(type == IngredientType.SHOULD_NOT_EAT) Game.GetInstance().fridgeSpawner.GetFridgeObj().CheckIngrediant();
+            //SoundManager sound = SoundManager.GetInstance();
+            if (type == IngredientType.SHOULD_NOT_EAT)
+            {
+                spawner.AddIngredientCount(1);
+                spawner.GetFridgeObj().CheckIngrediant();
+            }
+            /*{
+                if (Game.GetInstance().fridgeSpawner.GetFridgeObj().CheckIngrediant())
+                {
+                    sound.PlaySFXOneShot(SfxClipName.FRIDGECOMPLETE);
+                }
+                else
+                {
+                    sound.PlaySFXOneShot(SfxClipName.PICKOUTCORRECT02);
+                }
+            }
+            else
+            {
+                sound.PlaySFXOneShot(SfxClipName.PICKOUTFAIL01);
+            }*/
         }
     }
 
@@ -50,6 +70,7 @@ public class Ingredient : MonoBehaviour
         if (collision.CompareTag("RubbishBin"))
         {
             inRubbishBin = true;
+            UIManager.GetUI().UIGamePlay().OpenBinSprite(true, collision.gameObject);
             //print(gameObject.name+ " Hit RubbishBin");
         }
     }
@@ -59,6 +80,7 @@ public class Ingredient : MonoBehaviour
         if (collision.CompareTag("RubbishBin"))
         {
             inRubbishBin = false;
+            UIManager.GetUI().UIGamePlay().OpenBinSprite(false,collision.gameObject);
             //print(gameObject.name + " Out RubbishBin");
         }
     }
