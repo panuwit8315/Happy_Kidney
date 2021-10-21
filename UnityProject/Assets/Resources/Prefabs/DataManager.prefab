@@ -1,0 +1,844 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4860390974096498417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4860390974096498415}
+  - component: {fileID: 4860390974096498414}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4860390974096498415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860390974096498417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4860390974096498414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4860390974096498417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f827bdeaca52094cac87c90f12ef70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientData_SHOULD_NOT_EAT:
+  - engName: 
+    thName: "\u0E2A\u0E49\u0E21"
+    sprite: {fileID: 21300000, guid: 77e983b77c92b7a4bbeabcc14c5765ad, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E01\u0E25\u0E49\u0E27\u0E22"
+    sprite: {fileID: 21300000, guid: 1847226d0f2abd843a016aa1acbce13d, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E41\u0E04\u0E23\u0E2D\u0E17"
+    sprite: {fileID: 21300000, guid: 0fdff1d91b477f64c9827e6840548ea8, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E21\u0E30\u0E21\u0E48\u0E27\u0E07\u0E2A\u0E38\u0E01"
+    sprite: {fileID: 21300000, guid: c71d0c9877471ee4c9cf7e1ed605f864, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E1D\u0E23\u0E31\u0E48\u0E07"
+    sprite: {fileID: 21300000, guid: 16b4cb47919b46c45a68ddf2420d81a6, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E01\u0E35\u0E27\u0E35\u0E48"
+    sprite: {fileID: 21300000, guid: 06ee7c372727aac47b1d11af39f25ef0, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E1C\u0E31\u0E01\u0E1A\u0E38\u0E49\u0E07"
+    sprite: {fileID: 21300000, guid: 3fc8b87c28a5c4349b1f335bdab5b24f, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E1E\u0E35\u0E0A"
+    sprite: {fileID: 21300000, guid: bd6e0d931e91f7d449a0dc608ea01b9b, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E21\u0E30\u0E02\u0E32\u0E21"
+    sprite: {fileID: 21300000, guid: 2eea20dcfddea1b46a0337009bf664a5, type: 3}
+    dec: 
+    type: 0
+  - engName: 
+    thName: "\u0E21\u0E30\u0E40\u0E02\u0E37\u0E2D\u0E40\u0E17\u0E28"
+    sprite: {fileID: 21300000, guid: c82e1399439b35748bff7527cec86d7d, type: 3}
+    dec: 
+    type: 0
+  ingredientData_CAN_EAT:
+  - engName: 
+    thName: "\u0E21\u0E30\u0E21\u0E48\u0E27\u0E07\u0E21\u0E31\u0E19"
+    sprite: {fileID: 21300000, guid: fe80c093d87460443927e5a8572254b8, type: 3}
+    dec: 
+    type: 1
+  - engName: 
+    thName: "\u0E41\u0E15\u0E07\u0E42\u0E21"
+    sprite: {fileID: 21300000, guid: ece8aa3f31e73b9458ac1b33862d8ef6, type: 3}
+    dec: 
+    type: 1
+  - engName: 
+    thName: "\u0E40\u0E07\u0E32\u0E30"
+    sprite: {fileID: 21300000, guid: edc32849a76a723429eecb683f6723c8, type: 3}
+    dec: 
+    type: 1
+  - engName: 
+    thName: "\u0E41\u0E2D\u0E1B\u0E40\u0E1B\u0E34\u0E25\u0E40\u0E02\u0E35\u0E22\u0E27"
+    sprite: {fileID: 21300000, guid: 02b8dec77d03f6e4a8879cefb7979197, type: 3}
+    dec: 
+    type: 1
+  - engName: 
+    thName: "\u0E41\u0E15\u0E07\u0E01\u0E27\u0E32"
+    sprite: {fileID: 21300000, guid: 8056322dad89cfe478df538fd7419b08, type: 3}
+    dec: 
+    type: 1
+  - engName: 
+    thName: "\u0E41\u0E1E\u0E23\u0E4C"
+    sprite: {fileID: 21300000, guid: 00d53f336d535bb469fe89cf4ebbddae, type: 3}
+    dec: 
+    type: 1
+  - engName: 
+    thName: "\u0E0A\u0E21\u0E1E\u0E39\u0E48"
+    sprite: {fileID: 21300000, guid: c5fa413a971db974c9ef8b1e6508c2ce, type: 3}
+    dec: 
+    type: 1
+  normalDifLv:
+  - style: 0
+    shouldNotEatIngrediant: 1
+    canEatIngrediant: 0
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 0
+    shouldNotEatIngrediant: 1
+    canEatIngrediant: 1
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 0
+    shouldNotEatIngrediant: 1
+    canEatIngrediant: 1
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 0
+    shouldNotEatIngrediant: 1
+    canEatIngrediant: 1
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 0
+    shouldNotEatIngrediant: 1
+    canEatIngrediant: 2
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 0
+    shouldNotEatIngrediant: 1
+    canEatIngrediant: 2
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 1
+    shouldNotEatIngrediant: 1
+    canEatIngrediant: 2
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 1
+    shouldNotEatIngrediant: 1
+    canEatIngrediant: 2
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 1
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 1
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 1
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 1
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 1
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 1
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 2
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 2
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 2
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 2
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 2
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 2
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 2
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 3
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 2
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 3
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 3
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 3
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 3
+    shouldNotEatIngrediant: 2
+    canEatIngrediant: 3
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 3
+    shouldNotEatIngrediant: 3
+    canEatIngrediant: 3
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 3
+    shouldNotEatIngrediant: 3
+    canEatIngrediant: 3
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 3
+    shouldNotEatIngrediant: 3
+    canEatIngrediant: 3
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 4
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 2
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 4
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 2
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 4
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 2
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 4
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 2
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 4
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 3
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 5
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 3
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 5
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 3
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 0
+  - style: 5
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 0
+  - style: 5
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 0
+  - style: 5
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 0
+  - style: 6
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 6
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 6
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 6
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 6
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 2
+  - style: 7
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 2
+  - style: 7
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 2
+  - style: 7
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 2
+  - style: 7
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 2
+  - style: 7
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 2
+  - style: 8
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 8
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 8
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 8
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 8
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 9
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 9
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 9
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 9
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 9
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 3
+  hardDifLv:
+  - style: 10
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 10
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 10
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 10
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 10
+    shouldNotEatIngrediant: 4
+    canEatIngrediant: 5
+    obstacle_Ice: 0
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 10
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 11
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 11
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 11
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 11
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 11
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 0
+    obstacle_WoodenBoard: 0
+  - style: 12
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 12
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 12
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 12
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 12
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 13
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 13
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 13
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 13
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 4
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 0
+  - style: 13
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 14
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 14
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 14
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 14
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 1
+  - style: 14
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 15
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 15
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 15
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 15
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 15
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 16
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 16
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 16
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 16
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 1
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 16
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 17
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 17
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 17
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 17
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 1
+  - style: 17
+    shouldNotEatIngrediant: 6
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 18
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 18
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 18
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 18
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 1
+    obstacle_WoodenBoard: 2
+  - style: 18
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 19
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 19
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 19
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 19
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 2
+    obstacle_SpiderWeb: 2
+    obstacle_WoodenBoard: 2
+  - style: 19
+    shouldNotEatIngrediant: 5
+    canEatIngrediant: 5
+    obstacle_Ice: 3
+    obstacle_SpiderWeb: 3
+    obstacle_WoodenBoard: 3
+  comboDiff:
+  - maxCombo: 10
+    addTime: 5
+    addScore: 500
+    bonusType: 2
+  - maxCombo: 10
+    addTime: 5
+    addScore: 700
+    bonusType: 3
+  - maxCombo: 10
+    addTime: 5
+    addScore: 1300
+    bonusType: 4
+  - maxCombo: 10
+    addTime: 5
+    addScore: 0
+    bonusType: 4
+  fridgeShelfs:
+  - fridgeSprite: {fileID: 21300000, guid: 31cd7ab15a5ea8b4e9f0de697009ccd9, type: 3}
+    spawnPoint: {fileID: 7130221350436920771, guid: e786c8a6c8dd0a14d9cce59873bae54b,
+      type: 3}
+    style: 0
+  - fridgeSprite: {fileID: 21300000, guid: 64cef408957429f4a89955ec8e67c1bd, type: 3}
+    spawnPoint: {fileID: 8337422661415775228, guid: c2a20a6c7a774ae4db854bf96664f426,
+      type: 3}
+    style: 1
+  - fridgeSprite: {fileID: 21300000, guid: cb17acf1b6eda0e40a9e9ae5d1bba1c7, type: 3}
+    spawnPoint: {fileID: 6126109500969632661, guid: f0e074916823cc94abde8dbfab43ceb1,
+      type: 3}
+    style: 2
+  - fridgeSprite: {fileID: 21300000, guid: 01ad08fc9445d6e428312b46289a4f0e, type: 3}
+    spawnPoint: {fileID: 207868173292583788, guid: bdb68a4d9899b6243a898233b1bef25e,
+      type: 3}
+    style: 3
+  - fridgeSprite: {fileID: 21300000, guid: 92ff3c2c7334f954d8c739bf874d74ee, type: 3}
+    spawnPoint: {fileID: 6218751576228191910, guid: 4e6395cfd4f049c419c5704590d048fc,
+      type: 3}
+    style: 4
+  - fridgeSprite: {fileID: 21300000, guid: 2916cd6141adf3e48913a2b96dc46044, type: 3}
+    spawnPoint: {fileID: 7014174186465544239, guid: 852b648075ca95747892247944ed4360,
+      type: 3}
+    style: 5
+  - fridgeSprite: {fileID: 21300000, guid: aa925237ed2235947a9bdf905dddcf26, type: 3}
+    spawnPoint: {fileID: 2956189407078196472, guid: 77b88886d78e20d4c9ef924f6106fe5e,
+      type: 3}
+    style: 6
+  - fridgeSprite: {fileID: 21300000, guid: 1fa191e640801064eb3b7c44cb239513, type: 3}
+    spawnPoint: {fileID: 4930380379133855987, guid: 6408bfc063976d94cb5d143f8b36248f,
+      type: 3}
+    style: 7
+  - fridgeSprite: {fileID: 21300000, guid: 27f1766a5a9ae1f4d940f0a77fc42aa4, type: 3}
+    spawnPoint: {fileID: 3469170787034040524, guid: babbb74bce8b57c4481b4c5b6db15d34,
+      type: 3}
+    style: 8
+  - fridgeSprite: {fileID: 21300000, guid: 311c489f4e5090b459bbb69cf2dfbce1, type: 3}
+    spawnPoint: {fileID: 2405887753817649634, guid: ecca1b99b17a83b44a47003a2d25507e,
+      type: 3}
+    style: 9
+  - fridgeSprite: {fileID: 21300000, guid: 8113bdd0610c4674e8c05e57cd1eccda, type: 3}
+    spawnPoint: {fileID: 8986078107458099364, guid: 308ca960d0caa6643ad8989f17159f6d,
+      type: 3}
+    style: 10
+  - fridgeSprite: {fileID: 21300000, guid: 87b965ff069c02849b289cb8d7ce4bd6, type: 3}
+    spawnPoint: {fileID: 2535126459801557997, guid: 285bdb6af4a66eb4da0502a56b95ee8a,
+      type: 3}
+    style: 11
+  - fridgeSprite: {fileID: 21300000, guid: 996f97103bb16fa4b8958415d575dc19, type: 3}
+    spawnPoint: {fileID: 6591778529876299225, guid: bc9e75173b57f6546b02665edf667b7f,
+      type: 3}
+    style: 12
+  - fridgeSprite: {fileID: 21300000, guid: c4944f68cafbb094797ce2167227ea27, type: 3}
+    spawnPoint: {fileID: 7402485036378352145, guid: 353b27c32a6e42847b3406a9884767a7,
+      type: 3}
+    style: 13
+  - fridgeSprite: {fileID: 21300000, guid: e6ef5f6da17e64c40ac709eeb97a9ce5, type: 3}
+    spawnPoint: {fileID: 373283242430632705, guid: 4cd34f433b92a5047832e88251d9bb46,
+      type: 3}
+    style: 14
+  - fridgeSprite: {fileID: 21300000, guid: 5f7385b5c6501ea4b94734c18ae95c2a, type: 3}
+    spawnPoint: {fileID: 3767468936408539061, guid: b34d1013be4870e4cba40be5fa6e6df3,
+      type: 3}
+    style: 15
+  - fridgeSprite: {fileID: 21300000, guid: 827995faee109a5489afe8fa5e6c213d, type: 3}
+    spawnPoint: {fileID: 1632493741135500274, guid: 2624573ae2b4cc14c9ccad0db3b7d30a,
+      type: 3}
+    style: 16
+  - fridgeSprite: {fileID: 21300000, guid: ffbd25002a80f8047bd9ab4a78b720a4, type: 3}
+    spawnPoint: {fileID: 8756598854192079251, guid: 5f74e88c76d769c47b23e6bb602a6987,
+      type: 3}
+    style: 17
+  - fridgeSprite: {fileID: 21300000, guid: f1ada092c0e41e84f8a8103beac53b2a, type: 3}
+    spawnPoint: {fileID: 4082997163572101004, guid: 13c2f2b236087aa4e9635b3fa2bd41c5,
+      type: 3}
+    style: 18
+  - fridgeSprite: {fileID: 21300000, guid: 12ff922c1be0b2e44910f27816000b42, type: 3}
+    spawnPoint: {fileID: 3016261239782703475, guid: 6ee1ee5db03915242b8441dbe8a9d8e8,
+      type: 3}
+    style: 19
