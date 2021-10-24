@@ -126,12 +126,12 @@ MonoBehaviour:
     type: 0
   - engName: Sunflowerseeds
     thName: "\u0E40\u0E21\u0E25\u0E47\u0E14\u0E17\u0E32\u0E19\u0E15\u0E30\u0E27\u0E31\u0E19"
-    sprite: {fileID: 21300000, guid: 01f90a15b3a05174688bee67f41a1d5c, type: 3}
+    sprite: {fileID: 21300000, guid: b028067bd58aed941983c53b83ecf934, type: 3}
     dec: 
     type: 0
   - engName: WholeWheatBread
     thName: "\u0E02\u0E19\u0E21\u0E1B\u0E31\u0E07\u0E42\u0E2E\u0E25\u0E27\u0E35\u0E15 "
-    sprite: {fileID: 21300000, guid: 21b08a6b5598a4640bb8d360675d5aea, type: 3}
+    sprite: {fileID: 21300000, guid: 895da3c6b360b37419c73a2caf5f6728, type: 3}
     dec: 
     type: 0
   ingredientData_CAN_EAT:
