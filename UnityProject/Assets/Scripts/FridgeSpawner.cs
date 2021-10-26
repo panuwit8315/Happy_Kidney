@@ -17,6 +17,7 @@ public class FridgeSpawner : MonoBehaviour
 
     public GameObject currentFridgeObj;
     public List<IngredientData> allCurrentIngredientNotEat = new List<IngredientData>();
+    public List<IngredientData> allCurrentIngredientThrowAway = new List<IngredientData>();
 
     //Game game;
     UIManager UI;
@@ -64,6 +65,11 @@ public class FridgeSpawner : MonoBehaviour
         allCurrentIngredientNotEat.Add(ingredientData);
         UI.UIGamePlay().SetHintNoft(true);
     }
+    public void AddDataIngredientThrowAway(IngredientData ingredientData)
+    {
+        if (allCurrentIngredientThrowAway.Contains(ingredientData)) return;
+        allCurrentIngredientThrowAway.Add(ingredientData);       
+    }
 
     public int GetFridgeCount()
     {
@@ -95,6 +101,7 @@ public class FridgeSpawner : MonoBehaviour
         UI.UIGamePlay().SetScoreUI(score);
         UI.UIGamePlay().SetSliderValue(combo);
         allCurrentIngredientNotEat.Clear();
+        allCurrentIngredientThrowAway.Clear();
     }
 
     void AddScore(int add, bool useBonus = false)

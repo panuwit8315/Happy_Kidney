@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public enum SfxClipName {COMBO, PICKOUTCORRECT01, PICKOUTCORRECT02, PICKOUTFAIL01, PICKOUTFAIL02, TIMEOUT, FRIDGECOMPLETE, CLICK01, CLICK02, ENDGAME }
+public enum SfxClipName {COMBO, PICKOUTCORRECT01, PICKOUTCORRECT02, PICKOUTFAIL01, PICKOUTFAIL02, TIMEOUT, FRIDGECOMPLETE, CLICK01, CLICK02, ENDGAME, TIMELEFT }
 
 public class SoundManager : MonoBehaviour
 {
     private static SoundManager instance;
     public static SoundManager GetInstance() { return instance; }
     AudioSource bgmTrack01, bgmTrack02;
-    AudioSource sfxTrack;
+    AudioSource sfxTrack01, sfxTrack02;
 
     public AudioMixerGroup bgmMixer;
     public AudioMixerGroup sfxMixer;
@@ -34,11 +34,13 @@ public class SoundManager : MonoBehaviour
     {
         bgmTrack01 = gameObject.AddComponent<AudioSource>();
         bgmTrack02 = gameObject.AddComponent<AudioSource>();
-        sfxTrack = gameObject.AddComponent<AudioSource>();
+        sfxTrack01 = gameObject.AddComponent<AudioSource>();
+        sfxTrack02 = gameObject.AddComponent<AudioSource>();
         
         bgmTrack01.outputAudioMixerGroup = bgmMixer; bgmTrack01.loop = true;
         bgmTrack02.outputAudioMixerGroup = bgmMixer; bgmTrack02.loop = true;
-        sfxTrack.outputAudioMixerGroup = sfxMixer;
+        sfxTrack01.outputAudioMixerGroup = sfxMixer; //For OneShot
+        sfxTrack02.outputAudioMixerGroup = sfxMixer; sfxTrack02.loop = true; //For Loop
 
         isPlayingBgmTrack01 = true;
         ChangeBGMClip(defaultClip);
@@ -130,7 +132,16 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySFXOneShot(SfxClipName clipName)
     {
-        sfxTrack.PlayOneShot(clipsSFX[(int)clipName]);
+        sfxTrack01.PlayOneShot(clipsSFX[(int)clipName]);
+    }
+    public void PlaySFXLoop(SfxClipName clipName)
+    {
+        sfxTrack02.clip = clipsSFX[(int)clipName];
+        sfxTrack02.Play();
+    }
+    public void StopSFXLoop()
+    {
+        if(sfxTrack02.isPlaying) sfxTrack02.Stop();
     }
 
     //For Test Only

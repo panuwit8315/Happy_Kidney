@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
-    [SerializeField] string engName;
-    [SerializeField] string thName;
-    [SerializeField] string dec;
-    [SerializeField] IngredientType type;
+    //[SerializeField] string engName;
+    //[SerializeField] string thName;
+    //[SerializeField] string dec;
+    //[SerializeField] IngredientType type;
+    [SerializeField] IngredientData data;
 
     Vector3 originalPos;
     bool inRubbishBin = false;
@@ -15,10 +16,11 @@ public class Ingredient : MonoBehaviour
     public bool isBehindObstacle = false;
     public void Setup(IngredientData data)
     {
-        engName = data.engName;
-        thName = data.thName;
-        dec = data.dec;
-        type = data.type;
+        //engName = data.engName;
+        //thName = data.thName;
+        //dec = data.dec;
+        //type = data.type;
+        this.data = data;
         GetComponent<SpriteRenderer>().sprite = data.sprite;      
     }
 
@@ -31,16 +33,18 @@ public class Ingredient : MonoBehaviour
     public void BackToSpawnPoint()
     {
         transform.position = originalPos;
+        GetComponent<SpriteRenderer>().sortingOrder = 0;
         if (inRubbishBin)
         {
             FridgeSpawner spawner = Game.GetInstance().fridgeSpawner;
-            spawner.AddScoreAfterDropIngredient(type);
-            gameObject.SetActive(type == IngredientType.CAN_EAT);
-            isDroped = type == IngredientType.SHOULD_NOT_EAT;
+            spawner.AddScoreAfterDropIngredient(data.type);
+            gameObject.SetActive(data.type == IngredientType.CAN_EAT);
+            isDroped = data.type == IngredientType.SHOULD_NOT_EAT;
             //SoundManager sound = SoundManager.GetInstance();
-            if (type == IngredientType.SHOULD_NOT_EAT)
+            if (data.type == IngredientType.SHOULD_NOT_EAT)
             {
                 spawner.AddIngredientCount(1);
+                spawner.AddDataIngredientThrowAway(data);
                 spawner.GetFridgeObj().CheckIngrediant();
             }
             /*{
@@ -87,6 +91,6 @@ public class Ingredient : MonoBehaviour
 
     public IngredientType GetIngrediantType()
     {
-        return type;
+        return data.type;
     }
 }

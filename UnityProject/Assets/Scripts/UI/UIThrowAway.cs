@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIHint : MonoBehaviour, IUI
+public class UIThrowAway : MonoBehaviour, IUI
 {
     public Button closeBtn;
     [SerializeField] Transform panel;
@@ -11,23 +11,23 @@ public class UIHint : MonoBehaviour, IUI
     [SerializeField] Button leftBtn, rightBtn;
     [SerializeField] int currentTab, maxTab, maxSpawnPerTab;
     [SerializeField] List<IngredientData> dataToShow;
-
+    
     Game game;
     SoundManager sound;
 
     public void Open()
     {
-        Game game = Game.GetInstance();
+        game = Game.GetInstance();
         sound = SoundManager.GetInstance();
-        game.rayCast.enabled = false;
-        closeBtn?.onClick.AddListener(() =>
+        closeBtn.onClick.AddListener(() =>
         {
+            UIManager.GetUI().OpenLobbyUI();
             sound.PlaySFXOneShot(SfxClipName.CLICK02);
+            closeBtn.gameObject.SetActive(false);
             Close();
-            game.rayCast.enabled = true; 
         });
 
-        dataToShow = game.fridgeSpawner.allCurrentIngredientNotEat;
+        dataToShow = game.fridgeSpawner.allCurrentIngredientThrowAway;
         CalMaxTab();
         OpenTab(1);
     }
@@ -35,16 +35,16 @@ public class UIHint : MonoBehaviour, IUI
     void OpenTab(int tabIndex)
     {
         currentTab = tabIndex;
-        foreach (Transform t in panel.GetComponentsInChildren<Transform>())
+        foreach(Transform t in panel.GetComponentsInChildren<Transform>())
         {
-            if (t.gameObject == temp) continue;
+            if (t.gameObject == temp) continue; 
             if (t == panel) continue;
 
             Destroy(t.gameObject);
         }
 
         //SetUp LeftButton
-        if (currentTab > 1)
+        if(currentTab > 1)
         {
             leftBtn.interactable = true;
             leftBtn.onClick.RemoveAllListeners();
@@ -75,11 +75,11 @@ public class UIHint : MonoBehaviour, IUI
             rightBtn.interactable = false;
         }
 
-        int firstDataIndex = (currentTab - 1) * maxSpawnPerTab;
-        int finalDataIndex = (maxSpawnPerTab * currentTab) - 1; //-1 เพราะ index ของlist เริ่มจาก 0        
-        Debug.Log("finalDataIndex= " + finalDataIndex + ", firstDataIndex= " + firstDataIndex);
+        int firstDataIndex = (currentTab-1) * maxSpawnPerTab;
+        int finalDataIndex = (maxSpawnPerTab*currentTab) - 1; //-1 เพราะ index ของlist เริ่มจาก 0        
+        Debug.Log("finalDataIndex= "+finalDataIndex+", firstDataIndex= "+firstDataIndex);
 
-        for (int i = firstDataIndex; i <= finalDataIndex; i++)
+        for(int i = firstDataIndex; i <= finalDataIndex; i++)
         {
             if (i >= dataToShow.Count) break;
             SpawnIngredintList(dataToShow[i]);
@@ -90,7 +90,7 @@ public class UIHint : MonoBehaviour, IUI
     {
         int dataCount = dataToShow.Count;
         int remainder = dataCount % maxSpawnPerTab;
-        maxTab = dataCount / maxSpawnPerTab;
+        maxTab = dataCount / maxSpawnPerTab;       
         if (remainder > 0) maxTab++;
     }
 
@@ -98,6 +98,9 @@ public class UIHint : MonoBehaviour, IUI
     {
         GameObject g = Instantiate(temp, panel);
         g.GetComponentInChildren<Text>().text = data.thName;
+        /*g.transform.Find("Score").GetComponent<Text>().text = "45,645,566";
+        g.transform.Find("Name").GetComponent<Text>().text = "MpTong";
+        g.transform.Find("RankSprite").GetComponent<Image>().sprite = data.sprite;*/
         g.GetComponentInChildren<Image>().sprite = data.sprite;
         g.SetActive(true);
     }
@@ -112,5 +115,5 @@ public class UIHint : MonoBehaviour, IUI
     {
         UIManager.GetUI().CloseUI(this);
         Destroy(gameObject);
-    }   
+    }
 }

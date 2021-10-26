@@ -16,7 +16,7 @@ public class DebugCtrl : MonoBehaviour
 
     static DebugCtrl instance;
     List<GameObject> currentDebug = new List<GameObject>();
-    bool canUseInput = false;
+    //bool canUseInput = false;
 
     Game game;
 
@@ -99,7 +99,7 @@ public class DebugCtrl : MonoBehaviour
         string input = inputField.text;
         inputField.text = "";
 
-        if (!canUseInput)
+        {/*if (!canUseInput)
         {
             if (input == "jkp_jeng" || input == "Jkp_jeng" || input == "JKP_JENG") 
             {  
@@ -111,6 +111,37 @@ public class DebugCtrl : MonoBehaviour
             {
                 Log("คุณไม่มีสิทธิ์ในใช้คำสั่งต่างๆ");
             }
+            return;
+        }*/
+        }
+
+        if(input == "time5" || input == "Time5" || input == "time 5" || input == "Time 5")
+        {
+            if(game.scene != SceneState.GAMEPLAY)
+            {
+                Log("ต้องสั่งในหน้า GamePlay");
+                return;
+            }
+            game.timer.SetTime(5);
+            Log("ลดเวลาเหลือ 5 วินาที");
+            return;
+        }
+        else if (input == "time20" || input == "Time20" || input == "time 20" || input == "Time 20")
+        {
+            if (game.scene != SceneState.GAMEPLAY)
+            {
+                Log("ต้องสั่งในหน้า GamePlay");
+                return;
+            }
+            game.timer.SetTime(20);
+            Log("ลดเวลาเหลือ 20 วินาที");
+            return;
+        }
+        else if (input == "unlock" || input == "Unlock")
+        {
+            PlayerPrefs.SetInt("HighestFridgeLv", 40);
+            Log("ปลดล็อก โหมดยากแล้ว");
+            Log("ลองเข้าหน้าต่างเลือกโหมดดู");
             return;
         }
 

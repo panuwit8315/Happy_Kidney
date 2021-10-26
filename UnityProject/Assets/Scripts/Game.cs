@@ -26,7 +26,14 @@ public class Game : MonoBehaviour
     private void Start()
     {
         ui = UIManager.GetUI();
-        ui.OpenLobbyUI();
+        if (PlayerPrefs.GetString("PlayerName", "UnkownName") == "UnkownName") //เข้าครั้งแรก ยังไม่ได้ตั้งชื่อ
+        {
+            ui.OpenInputNameUI();//print("เข้าครั้งแรก ยังไม่ได้ตั้งชื่อ");
+        }
+        else 
+        {
+            ui.OpenLobbyUI(); //print("ไม่เข้าครั้งแรก ได้ตั้งชื่อแล้ว");
+        } 
     }
 
     public void StartGame(PlayDifference playDiff)

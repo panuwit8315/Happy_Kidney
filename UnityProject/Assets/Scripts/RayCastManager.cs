@@ -30,6 +30,7 @@ public class RayCastManager : MonoBehaviour
                     Game.GetInstance().fridgeSpawner.GetFridgeObj().DisableOtherIngrediantCol(currentHitObj.name);
                     UIManager.GetUI().UIGamePlay().EnableColAllItem(false);
                     UIManager.GetUI().UIGamePlay().MoveInRubbishBin();
+                    currentHitObj.GetComponent<SpriteRenderer>().sortingLayerName = "Obstacle";
                 }
                 else if (currentHitObj.CompareTag(itemTag))
                 {
@@ -85,6 +86,7 @@ public class RayCastManager : MonoBehaviour
                 currentHitObj.GetComponent<Ingredient>().BackToSpawnPoint();
                 UIManager.GetUI().UIGamePlay().MoveOutRubbishBin();
                 UIManager.GetUI().UIGamePlay().EnableColAllItem(true);
+                currentHitObj.GetComponent<SpriteRenderer>().sortingLayerName = "Ingredente";
             }
             else if (currentHitObj.CompareTag(itemTag))
             {

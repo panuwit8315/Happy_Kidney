@@ -54,13 +54,18 @@ public class UIGamePlay : MonoBehaviour, IUI
     public void Close()
     {
         GetComponent<Animator>().SetTrigger("MoveOut");
-        Invoke("DestroyObj", 1);
+        Invoke("DestroyObj", 0.5f);
     }
 
     public void DestroyObj()
     {
         UIManager.GetUI().CloseUI(this);
         Destroy(gameObject);
+    }
+
+    public void TimeAlert()
+    {
+        GetComponent<Animator>().SetTrigger("TimeAlert");
     }
 
     public void SetHintNoft(bool isOn)

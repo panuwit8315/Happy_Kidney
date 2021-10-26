@@ -54,7 +54,7 @@ public class UIPause : MonoBehaviour, IUI
             {
                 Close();
                 sound.PlaySFXOneShot(SfxClipName.CLICK02);
-                UIManager.GetUI().OpenLobbyUI();
+                //UIManager.GetUI().OpenLobbyUI();
             });
         }
         else if (game.scene == SceneState.GAMEPLAY)

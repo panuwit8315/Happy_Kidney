@@ -23,6 +23,8 @@ public class UIManager : MonoBehaviour
     private UILeaderboard uiLeaderboard;
     private UIPause uiPause;
     private UITutorial uiTutorial;
+    private UIThrowAway uiThrowAway;
+    private UIInputName uiInputName;
     public UIGamePlay UIGamePlay() { if (uiGamePlay == null) OpenGamePlayUI(); return uiGamePlay; } //Game.GetInstance().fridgeSpawner.diff
     public UILobby UILobby() { if (uiLobby == null) OpenLobbyUI(); return uiLobby; }
     public UIEndGame UIEndGame() { if (uiEndGame == null) OpenEndGameUI(); return uiEndGame; }
@@ -31,6 +33,8 @@ public class UIManager : MonoBehaviour
     public UILeaderboard UILeaderboard() { if (uiLeaderboard == null) OpenLeaderboardUI(); return uiLeaderboard; }
     public UIPause UIPause() { if (uiPause == null) OpenPauseUI(); return uiPause; }
     public UITutorial UITutorial() { if (uiTutorial == null) OpenTutorialUI(); return uiTutorial; }
+    public UIThrowAway UIThrowAway() { return uiThrowAway; }
+    public UIInputName UIInputName() { return uiInputName; }
 
     public void OpenGamePlayUI()//PlayDifference currentDiff)
     {
@@ -48,7 +52,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenLobbyUI()
     {
-        if (GetComponentInChildren<UILobby>() != null) return;
+        //if (GetComponentInChildren<UILobby>() != null) return;
 
         GameObject g = SpawnObj("Prefabs/UI/UILobby");
         if (g == null) return;
@@ -142,6 +146,34 @@ public class UIManager : MonoBehaviour
     public void CloseUI(UITutorial ui)
     {
         uiTutorial = null;
+    }
+
+    public void OpenThrowAwayUI()
+    {
+        if (GetComponentInChildren<UIThrowAway>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UIThrowAway");
+        if (g == null) return;
+        g.GetComponent<UIThrowAway>().Open();
+        uiThrowAway = g.GetComponent<UIThrowAway>();
+    }
+    public void CloseUI(UIThrowAway ui)
+    {
+        uiThrowAway = null;
+    }
+
+    public void OpenInputNameUI()
+    {
+        //if (GetComponentInChildren<UIInputName>() != null) return;
+
+        GameObject g = SpawnObj("Prefabs/UI/UIInputName"); print("OpenInputNameUI");
+        if (g == null) return;
+        g.GetComponent<UIInputName>().Open();
+        uiInputName = g.GetComponent<UIInputName>();
+    }
+    public void CloseUI(UIInputName ui)
+    {
+        uiInputName = null;
     }
 
     private GameObject SpawnObj(string path)

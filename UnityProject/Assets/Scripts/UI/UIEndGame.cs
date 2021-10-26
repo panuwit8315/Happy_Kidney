@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UIEndGame : MonoBehaviour, IUI
 {
+    [SerializeField] Button close;
     [SerializeField] Text scoreText;
     [SerializeField] Text coinText;
     [SerializeField] Text fridgeText;
@@ -19,30 +20,21 @@ public class UIEndGame : MonoBehaviour, IUI
         ui = UIManager.GetUI();
         ui.UIGamePlay().MoveOutBin();
         if (ui.UIHint() != null) ui.UIHint().Close();
-        //sound.PlaySFXOneShot(SfxClipName.ENDGAME);
+        sound.PlaySFXOneShot(SfxClipName.TIMEOUT);
         int score = game.fridgeSpawner.GetScore();
         int fakeCoin = score / 100;
         scoreText.text = score.ToString("0");
         coinText.text = fakeCoin.ToString("0");
         fridgeText.text = game.fridgeSpawner.GetFridgeCount().ToString("0");
         ingredientText.text = game.fridgeSpawner.GetIngredientCount().ToString("0");
-    }
-
-    public void OnRestartBtn()
-    {
-        Game game = Game.GetInstance();
-        sound.PlaySFXOneShot(SfxClipName.CLICK02);
-        game.StartGame(game.fridgeSpawner.diff);
-        //close this ui
-        Close();
-    }
-
-    public void OnBackMenuBtn()
-    {
-        ui.OpenLobbyUI();
-        sound.PlaySFXOneShot(SfxClipName.CLICK02);
-        //close this ui
-        Close();
+        close.onClick.AddListener(() =>
+        {
+            ui.OpenThrowAwayUI();
+            sound.PlaySFXOneShot(SfxClipName.CLICK02);
+            close.gameObject.SetActive(false);
+            //close this ui
+            Close();
+        });
     }
 
     public void Close()

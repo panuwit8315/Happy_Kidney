@@ -27,17 +27,19 @@ public class Timer : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            if(timer < 3.1f && isPlayTimeSfx)
+            if(timer < 10f && isPlayTimeSfx)
             {
-                SoundManager.GetInstance().PlaySFXOneShot(SfxClipName.TIMEOUT);
+                UI.UIGamePlay().TimeAlert();
+                SoundManager.GetInstance().PlaySFXLoop(SfxClipName.TIMELEFT);
                 isPlayTimeSfx = false;
             }
             else if (timer <= 0)
             {
                 timer = 0;
                 isRunTime = false;
-                //do something
-                EndGame();
+                SoundManager.GetInstance().StopSFXLoop();
+
+                EndGame();  
             }
 
             //update UI timer
