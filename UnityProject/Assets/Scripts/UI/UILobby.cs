@@ -7,8 +7,9 @@ public class UILobby : MonoBehaviour, IUI
 {
     [SerializeField] Button startBtn;
     [SerializeField] Button settingBtn;    
-    [SerializeField] Text nameTx;    
+    [SerializeField] Text nameTx;
 
+    //UILeaderboard uiLeaderboard;
     //[SerializeField] GameObject logo;
 
     Game game;
@@ -31,6 +32,8 @@ public class UILobby : MonoBehaviour, IUI
 
         string playerName = PlayerPrefs.GetString("PlayerName");
         nameTx.text = "ยินดีต้อนรับ\nคุณ " + playerName;
+
+        //uiLeaderboard.SetData();
     }
 
     public void Close()

@@ -3805,11 +3805,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UILeaderBoard
       objectReference: {fileID: 0}
-    - target: {fileID: 3704891987045240849, guid: 25df201676a5e6b428466254b2e1e528,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3704891987045240854, guid: 25df201676a5e6b428466254b2e1e528,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3914,36 +3909,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605170972805795857, guid: 25df201676a5e6b428466254b2e1e528,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605170972805795857, guid: 25df201676a5e6b428466254b2e1e528,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605170972805795857, guid: 25df201676a5e6b428466254b2e1e528,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 737.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605170972805795857, guid: 25df201676a5e6b428466254b2e1e528,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 109.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605170972805795857, guid: 25df201676a5e6b428466254b2e1e528,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 387.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 4605170972805795857, guid: 25df201676a5e6b428466254b2e1e528,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -54.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25df201676a5e6b428466254b2e1e528, type: 3}

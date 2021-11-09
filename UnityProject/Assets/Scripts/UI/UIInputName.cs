@@ -8,6 +8,9 @@ public class UIInputName : MonoBehaviour, IUI
     [SerializeField] Button closeBtn;
     [SerializeField] InputField inputField;
     [SerializeField] Text outputTx;
+
+    
+
     public void Open()
     {
         closeBtn.onClick.AddListener(() =>
@@ -44,6 +47,8 @@ public class UIInputName : MonoBehaviour, IUI
             PlayerPrefs.SetString("PlayerName", inputStr);
             Close();
             UIManager.GetUI().OpenLobbyUI();
+
+            
         }
     }
 }

@@ -21,7 +21,7 @@ public class UIThrowAway : MonoBehaviour, IUI
         sound = SoundManager.GetInstance();
         closeBtn.onClick.AddListener(() =>
         {
-            UIManager.GetUI().OpenLobbyUI();
+            UIManager.GetUI().OpenLeaderboardUI();
             sound.PlaySFXOneShot(SfxClipName.CLICK02);
             closeBtn.gameObject.SetActive(false);
             Close();

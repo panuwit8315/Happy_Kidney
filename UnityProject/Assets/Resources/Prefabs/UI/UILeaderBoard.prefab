@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4605170972805795857
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -54.950012}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2585050214567613670
@@ -565,6 +565,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f546d75c37fde0249aad703e529258c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panel: {fileID: 2798937372733515954}
+  temp: {fileID: 248359403544846331}
+  leftBtn: {fileID: 3925883075651164739}
+  rightBtn: {fileID: 6474650211355400610}
+  currentTab: 0
+  maxTab: 0
+  maxSpawnPerTab: 7
+  dataToShow: []
+  nameTx: {fileID: 5903894883133059065}
+  scoreTx: {fileID: 2788228736639846352}
+  closeBtn: {fileID: 7271590726415575086}
+  url: https://happy-kidney-default-rtdb.asia-southeast1.firebasedatabase.app/
+  secret: U6YbKtoQ5tcUBci5ErEm1wL8bOYybsR2BcvQRrnu
+  OnGetDone:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7746021349981149431}
+        m_TargetAssemblyTypeName: UILeaderboard, Assembly-CSharp
+        m_MethodName: AddData
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  user:
+    userData: []
 --- !u!95 &1001401268
 Animator:
   serializedVersion: 3
