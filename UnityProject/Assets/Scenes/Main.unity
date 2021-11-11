@@ -3805,6 +3805,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UILeaderBoard
       objectReference: {fileID: 0}
+    - target: {fileID: 3704891987045240849, guid: 25df201676a5e6b428466254b2e1e528,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3704891987045240854, guid: 25df201676a5e6b428466254b2e1e528,
         type: 3}
       propertyPath: m_Pivot.x

@@ -98,9 +98,6 @@ public class UIThrowAway : MonoBehaviour, IUI
     {
         GameObject g = Instantiate(temp, panel);
         g.GetComponentInChildren<Text>().text = data.thName;
-        /*g.transform.Find("Score").GetComponent<Text>().text = "45,645,566";
-        g.transform.Find("Name").GetComponent<Text>().text = "MpTong";
-        g.transform.Find("RankSprite").GetComponent<Image>().sprite = data.sprite;*/
         g.GetComponentInChildren<Image>().sprite = data.sprite;
         g.SetActive(true);
     }

@@ -17,8 +17,8 @@ public class UILeaderboard : MonoBehaviour, IUI
     [SerializeField] int currentTab, maxTab, maxSpawnPerTab;
     [SerializeField] List<User.UserData> dataToShow;
 
-    [SerializeField] Text nameTx;
-    [SerializeField] Text scoreTx;
+    [SerializeField] GameObject myScoreObj;
+    [SerializeField] Sprite[] rankSprites;
     
     public Button closeBtn;
 
@@ -26,18 +26,19 @@ public class UILeaderboard : MonoBehaviour, IUI
     public string secret = "U6YbKtoQ5tcUBci5ErEm1wL8bOYybsR2BcvQRrnu";
 
     int scoreGame = 0;
+    string playerName;
+    string playerTag;
+
     public UnityEvent OnGetDone;
 
     public void Open()
     {
         game = Game.GetInstance();
-        string playerName = PlayerPrefs.GetString("PlayerName");
-        int score = game.fridgeSpawner.GetScore();
-        nameTx.text = playerName;
-        scoreTx.text = score.ToString();
-        scoreGame = score;
         sound = SoundManager.GetInstance();
-        
+        playerName = PlayerPrefs.GetString("PlayerName");
+        playerTag = PlayerPrefs.GetString("PlayerTag",playerName+"#"+System.DateTime.Now.ToString("s"));
+        scoreGame = game.fridgeSpawner.GetScore();
+       
         closeBtn.onClick.AddListener(() =>
         {
             UIManager.GetUI().OpenLobbyUI();
@@ -51,15 +52,13 @@ public class UILeaderboard : MonoBehaviour, IUI
 
     public void AddData()
     {
-        User.UserData playerData = new User.UserData(PlayerPrefs.GetString("PlayerName"), scoreGame);
-        Debug.Log("user.userData" + user.userData.Count);
-        dataToShow = user.userData; 
-        Debug.Log("dataToShow" + user.userData.Count);
+        //User.UserData playerData = new User.UserData(PlayerPrefs.GetString("PlayerName"), scoreGame); //Debug.Log("user.userData" + user.userData.Count);
+        dataToShow = user.userData; //Debug.Log("dataToShow" + user.userData.Count);
         SortLeaderboard();
-        CalMaxTab(); 
-        Debug.Log("CalMaxTab" + user.userData.Count);
-        OpenTab(1);
-        Debug.Log("OpenTab" + user.userData.Count);
+        CalMaxTab(); //Debug.Log("CalMaxTab" + user.userData.Count);
+        OpenTab(1); //Debug.Log("OpenTab" + user.userData.Count);
+        SetMyScore();
+        //print("AddData()");
     }
 
     public void SortLeaderboard()
@@ -113,12 +112,12 @@ public class UILeaderboard : MonoBehaviour, IUI
 
         int firstDataIndex = (currentTab - 1) * maxSpawnPerTab;
         int finalDataIndex = (maxSpawnPerTab * currentTab) - 1; //-1 เพราะ index ของlist เริ่มจาก 0        
-        Debug.Log("finalDataIndex= " + finalDataIndex + ", firstDataIndex= " + firstDataIndex);
+        //Debug.Log("finalDataIndex= " + finalDataIndex + ", firstDataIndex= " + firstDataIndex);
 
         for (int i = firstDataIndex; i <= finalDataIndex; i++)
         {
             if (i >= dataToShow.Count) break;
-            SpawnPlayerData(dataToShow[i]);   
+            SpawnPlayerData(dataToShow[i],i+1);   
         }
     }
 
@@ -130,17 +129,44 @@ public class UILeaderboard : MonoBehaviour, IUI
         if (remainder > 0) maxTab++;
     }
 
-    void SpawnPlayerData(User.UserData data)
+    void SpawnPlayerData(User.UserData data,int rank)
     {
         GameObject g = Instantiate(temp, panel);
-        //g.GetComponentInChildren<Text>().text = data.thName;
-        g.transform.Find("Score").GetComponent<Text>().text = data.score.ToString();
-        g.transform.Find("Score").GetComponent<Text>().enabled = true;
-        g.transform.Find("Name").GetComponent<Text>().text = data.name;
-        g.transform.Find("Name").GetComponent<Text>().enabled = true;
-        //g.transform.Find("RankSprite").GetComponent<Image>().sprite = data.sprite;
-        //g.GetComponentInChildren<Image>().sprite = data.sprite;
+        SetPlayerScore(data, rank, g);
         g.SetActive(true);
+    }
+
+    void SetMyScore()
+    {
+        for (int i = 0; i < user.userData.Count; i++)
+        {
+            if (user.userData[i].tag == playerTag)
+            {
+                if (scoreGame > user.userData[i].score) user.userData[i].score = scoreGame;
+                SetPlayerScore(user.userData[i], i + 1,myScoreObj);
+                break;
+            }
+        }
+    }
+    void SetPlayerScore(User.UserData data,int rank,GameObject obj)
+    {
+        Image rankImage;
+        obj.transform.Find("Name").GetComponent<Text>().text = data.name;
+        obj.transform.Find("Score").GetComponent<Text>().text = data.score.ToString();
+        if(rank <= 3)
+        {
+            rankImage = obj.transform.Find("TopRankSprite").GetComponent<Image>();
+            rankImage.sprite = rankSprites[rank-1];
+            rankImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            rankImage = obj.transform.Find("RankSprite").GetComponent<Image>();
+            rankImage.gameObject.SetActive(true);
+            Text rankTx = obj.transform.Find("RankText").GetComponent<Text>();
+            rankTx.text = rank.ToString();
+            rankTx.gameObject.SetActive(true);
+        }
     }
 
     public void Close()
@@ -163,11 +189,13 @@ public class UILeaderboard : MonoBehaviour, IUI
         {
             public string name;
             public int score;
+            public string tag;
 
-            public UserData(string name,int score)
+            public UserData(string name,int score, string tag)
             {
                 this.name = name;
                 this.score = score;              
+                this.tag = tag;              
             }
         }
 
@@ -189,22 +217,22 @@ public class UILeaderboard : MonoBehaviour, IUI
 
             for (int i = 0; i < jsonNode.Count; i++)
             {
-                user.userData.Add(new User.UserData(jsonNode[i]["name"], jsonNode[i]["score"]));               
+                user.userData.Add(new User.UserData(jsonNode[i]["name"], jsonNode[i]["score"], jsonNode[i]["tag"]));               
             }
-
-            bool isDuplicateName = false;
+           
+            bool isDuplicateTag = false;
             for (int i = 0; i < user.userData.Count; i++)
             {
-                if (user.userData[i].name == PlayerPrefs.GetString("PlayerName"))
+                if (user.userData[i].tag == playerTag)
                 {
-                    user.userData[i].score = scoreGame;
-                    isDuplicateName = true;
+                    if(scoreGame > user.userData[i].score) user.userData[i].score = scoreGame;
+                    isDuplicateTag = true;
                 }
             }
 
-            if(!isDuplicateName)
+            if(!isDuplicateTag)
             {
-                user.userData.Add(new User.UserData(PlayerPrefs.GetString("PlayerName"), scoreGame));
+                user.userData.Add(new User.UserData(playerName, scoreGame, playerTag));
             }
 
             Debug.Log("GetData" + user.userData.Count);
@@ -215,7 +243,7 @@ public class UILeaderboard : MonoBehaviour, IUI
         {
             Debug.Log("Not Found Data");
             user.userData = new List<User.UserData>();
-            user.userData.Add(new User.UserData(PlayerPrefs.GetString("PlayerName"), scoreGame));
+            user.userData.Add(new User.UserData(playerName, scoreGame, playerTag));
             SetData();     
         });
     }

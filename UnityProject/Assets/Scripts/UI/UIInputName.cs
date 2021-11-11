@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,10 +9,8 @@ public class UIInputName : MonoBehaviour, IUI
     [SerializeField] InputField inputField;
     [SerializeField] Text outputTx;
 
-    
-
     public void Open()
-    {
+    {       
         closeBtn.onClick.AddListener(() =>
         {
             OnClickStartBtn();
@@ -44,11 +42,12 @@ public class UIInputName : MonoBehaviour, IUI
         }
         else
         {
+            string dateTimeStr = DateTime.Now.ToString("s");
+            string playerTag = inputStr + "#" + dateTimeStr; print(playerTag);
             PlayerPrefs.SetString("PlayerName", inputStr);
+            PlayerPrefs.SetString("PlayerTag", playerTag);
             Close();
-            UIManager.GetUI().OpenLobbyUI();
-
-            
+            UIManager.GetUI().OpenLobbyUI();          
         }
     }
 }
