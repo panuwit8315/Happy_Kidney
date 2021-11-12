@@ -75,7 +75,7 @@ MonoBehaviour:
     dec: 
     type: 0
   - engName: Morningglory
-    thName: "\u0E1C\u0E31\u0E01\u0E1A\u0E38\u0E49\u0E07"
+    thName: "\u0E04\u0E30\u0E19\u0E49\u0E32"
     sprite: {fileID: 21300000, guid: 3fc8b87c28a5c4349b1f335bdab5b24f, type: 3}
     dec: 
     type: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
     dec: 
     type: 0
   - engName: Icecream
-    thName: "\u0E44\u0E2D\u0E28\u0E04\u0E23\u0E35\u0E21"
+    thName: "\u0E44\u0E2D\u0E28\u0E01\u0E23\u0E35\u0E21"
     sprite: {fileID: 21300000, guid: b16f5dadb6b277f429118cb0d490273d, type: 3}
     dec: 
     type: 0
@@ -130,8 +130,58 @@ MonoBehaviour:
     dec: 
     type: 0
   - engName: WholeWheatBread
-    thName: "\u0E02\u0E19\u0E21\u0E1B\u0E31\u0E07\u0E42\u0E2E\u0E25\u0E27\u0E35\u0E15 "
+    thName: "\u0E02\u0E19\u0E21\u0E1B\u0E31\u0E07\u0E42\u0E2E\u0E25\u0E27\u0E35\u0E15"
     sprite: {fileID: 21300000, guid: 895da3c6b360b37419c73a2caf5f6728, type: 3}
+    dec: 
+    type: 0
+  - engName: Cake
+    thName: "\u0E40\u0E04\u0E49\u0E01"
+    sprite: {fileID: 21300000, guid: 52b859409b772254e932aba370dc9bf3, type: 3}
+    dec: 
+    type: 0
+  - engName: Cheese
+    thName: "\u0E0A\u0E35\u0E2A"
+    sprite: {fileID: 21300000, guid: 990e7e2e3454ef84389c8df0fea9bb50, type: 3}
+    dec: 
+    type: 0
+  - engName: Coffee
+    thName: "\u0E01\u0E32\u0E41\u0E1F"
+    sprite: {fileID: 21300000, guid: f82e1dc7c38d10b4f9fb5e936421633a, type: 3}
+    dec: 
+    type: 0
+  - engName: Dragonfruit
+    thName: "\u0E41\u0E01\u0E49\u0E27\u0E21\u0E31\u0E07\u0E01\u0E23"
+    sprite: {fileID: 21300000, guid: bbbee77a7ffddd54abb290cc7f525934, type: 3}
+    dec: 
+    type: 0
+  - engName: Durian
+    thName: "\u0E17\u0E38\u0E40\u0E23\u0E35\u0E22\u0E19"
+    sprite: {fileID: 21300000, guid: 2e65433cbcaddc0459189d3459d39811, type: 3}
+    dec: 
+    type: 0
+  - engName: Longan
+    thName: "\u0E25\u0E33\u0E44\u0E22"
+    sprite: {fileID: 21300000, guid: 0def3f21cb5a96a418e431077770377b, type: 3}
+    dec: 
+    type: 0
+  - engName: Meat
+    thName: "\u0E40\u0E19\u0E37\u0E49\u0E2D"
+    sprite: {fileID: 21300000, guid: a65e4fa9f204175459f225ca80be6a75, type: 3}
+    dec: 
+    type: 0
+  - engName: Noodle
+    thName: "\u0E01\u0E4B\u0E27\u0E22\u0E40\u0E15\u0E35\u0E4B\u0E22\u0E27"
+    sprite: {fileID: 21300000, guid: a4773f0e82ad7234391f0697485ed098, type: 3}
+    dec: 
+    type: 0
+  - engName: Potato
+    thName: "\u0E21\u0E31\u0E19\u0E1D\u0E23\u0E31\u0E48\u0E07"
+    sprite: {fileID: 21300000, guid: c71cc2f7118523147a5105b3c6f714e4, type: 3}
+    dec: 
+    type: 0
+  - engName: StarApple
+    thName: "\u0E21\u0E30\u0E40\u0E1F\u0E37\u0E2D\u0E07"
+    sprite: {fileID: 21300000, guid: a65b2a6b16d54224087f2a181f46e3ee, type: 3}
     dec: 
     type: 0
   ingredientData_CAN_EAT:
@@ -173,6 +223,46 @@ MonoBehaviour:
   - engName: Mangosteen
     thName: "\u0E21\u0E31\u0E07\u0E04\u0E38\u0E14"
     sprite: {fileID: 21300000, guid: 14d28a0562525fc428414da565fa85d6, type: 3}
+    dec: 
+    type: 1
+  - engName: Beansprout
+    thName: "\u0E16\u0E31\u0E48\u0E27\u0E07\u0E2D\u0E01"
+    sprite: {fileID: 21300000, guid: 828d16fec7fd9e84fb3770ea19595f1b, type: 3}
+    dec: 
+    type: 1
+  - engName: Cabbage
+    thName: "\u0E01\u0E30\u0E2B\u0E25\u0E48\u0E33\u0E1B\u0E25\u0E35 "
+    sprite: {fileID: 21300000, guid: 5aa8f9506e1282a46983c3f23a90909e, type: 3}
+    dec: 
+    type: 1
+  - engName: Eggplant
+    thName: "\u0E21\u0E30\u0E40\u0E02\u0E37\u0E2D"
+    sprite: {fileID: 21300000, guid: c1f1336128245fe4fa31f08ca52e5fbb, type: 3}
+    dec: 
+    type: 1
+  - engName: Grape
+    thName: "\u0E2D\u0E07\u0E38\u0E48\u0E19"
+    sprite: {fileID: 21300000, guid: 956739140c534f44fb048216ebb3f1d2, type: 3}
+    dec: 
+    type: 1
+  - engName: GreenPeas
+    thName: "\u0E16\u0E31\u0E48\u0E27\u0E40\u0E02\u0E35\u0E22\u0E27"
+    sprite: {fileID: 21300000, guid: 884a890591bf5174589731164774023a, type: 3}
+    dec: 
+    type: 1
+  - engName: Onion
+    thName: "\u0E2B\u0E31\u0E27\u0E2B\u0E2D\u0E21"
+    sprite: {fileID: 21300000, guid: 0eaf97efdd5f017419963c018129deff, type: 3}
+    dec: 
+    type: 1
+  - engName: Pineapple
+    thName: "\u0E2A\u0E31\u0E1B\u0E1B\u0E30\u0E23\u0E14 "
+    sprite: {fileID: 21300000, guid: 6699c038f7a32e24091c7e2d2ae00503, type: 3}
+    dec: 
+    type: 1
+  - engName: SweetPepper
+    thName: "\u0E1E\u0E23\u0E34\u0E01\u0E2B\u0E22\u0E27\u0E01"
+    sprite: {fileID: 21300000, guid: 5803559824c2d86489c7db522aaf29eb, type: 3}
     dec: 
     type: 1
   normalDifLv:
