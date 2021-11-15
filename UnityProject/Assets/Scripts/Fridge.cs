@@ -54,19 +54,35 @@ public class Fridge : MonoBehaviour //default
             if(spawn != spawnPoints.transform)spawnList.Add(spawn.gameObject);           
         }
 
-        List<IngredientData> ingredientData_canEat = new List<IngredientData>();
-        //ingredientData_canEat = dataM.IngredientData_CAN_EAT;
-        foreach (IngredientData data in dataM.GetIngredientData(IngredientType.CAN_EAT))
+        //if PlayDifference.HARD
+        int maxRancomIngCantEat = dataM.GetIngredientData(IngredientType.CAN_EAT).Count;
+        int maxRancomIngNotEat = dataM.GetIngredientData(IngredientType.SHOULD_NOT_EAT).Count;
+        if(playDiff == PlayDifference.NORMAL)
         {
-            ingredientData_canEat.Add(data);
+            maxRancomIngCantEat = dataM.GetIngredientData(IngredientType.CAN_EAT).Count / 2;
+            maxRancomIngNotEat = dataM.GetIngredientData(IngredientType.SHOULD_NOT_EAT).Count / 2;
         }
+        print("Random สิ่งที่กินได้ "+maxRancomIngCantEat + " อย่าง,สิ่งที่กินไม่ได้ " + maxRancomIngNotEat + " อย่าง");
+
+        List<IngredientData> ingredientData_canEat = new List<IngredientData>();      
+        for(int i = 0; i < maxRancomIngCantEat; i++)
+        {
+            ingredientData_canEat.Add(dataM.GetIngredientData(IngredientType.CAN_EAT)[i]);
+        }
+        //foreach (IngredientData data in dataM.GetIngredientData(IngredientType.CAN_EAT))
+        //{
+        //    ingredientData_canEat.Add(data);
+        //}
 
         List<IngredientData> ingredientData_notEat = new List<IngredientData>();
-        //ingredientData_notEat = dataM.IngredientData_SHOULD_NOT_EAT;
-        foreach (IngredientData data in dataM.GetIngredientData(IngredientType.SHOULD_NOT_EAT))
+        for (int i = 0; i < maxRancomIngNotEat; i++)
         {
-            ingredientData_notEat.Add(data);
+            ingredientData_notEat.Add(dataM.GetIngredientData(IngredientType.SHOULD_NOT_EAT)[i]);
         }
+        //foreach (IngredientData data in dataM.GetIngredientData(IngredientType.SHOULD_NOT_EAT))
+        //{
+        //    ingredientData_notEat.Add(data);
+        //}
 
         int allSpawn = canEat + notEat;
         if (allSpawn > spawnPoints.transform.childCount) 

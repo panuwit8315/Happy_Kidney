@@ -23,11 +23,20 @@ public class UIEndGame : MonoBehaviour, IUI
         if (ui.UIHint() != null) ui.UIHint().Close();
         sound.PlaySFXOneShot(SfxClipName.TIMEOUT);
         int score = game.fridgeSpawner.GetScore();
-        int fakeCoin = score / 100;
+        int coin = score / 100;
         scoreText.text = score.ToString("0");
-        coinText.text = fakeCoin.ToString("0");
+        coinText.text = coin.ToString("0");
         fridgeText.text = game.fridgeSpawner.GetFridgeCount().ToString("0");                
         ingredientText.text = game.fridgeSpawner.GetIngredientCount().ToString("0");
+
+        int myCoin = PlayerPrefs.GetInt("PlayerCoin", 0);
+        myCoin += coin;
+        PlayerPrefs.SetInt("PlayerCoin", myCoin);
+
+        int myHighScore = PlayerPrefs.GetInt("PlayerHighScore", 0);
+        if(score > myHighScore) myHighScore = score;
+        PlayerPrefs.SetInt("PlayerHighScore", myHighScore);
+
         close.onClick.AddListener(() =>
         {
             ui.OpenThrowAwayUI();

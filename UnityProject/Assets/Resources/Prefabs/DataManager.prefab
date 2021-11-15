@@ -286,7 +286,7 @@ MonoBehaviour:
     obstacle_WoodenBoard: 0
   - style: 0
     shouldNotEatIngrediant: 1
-    canEatIngrediant: 1
+    canEatIngrediant: 2
     obstacle_Ice: 0
     obstacle_SpiderWeb: 0
     obstacle_WoodenBoard: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
     obstacle_SpiderWeb: 0
     obstacle_WoodenBoard: 0
   - style: 1
-    shouldNotEatIngrediant: 1
+    shouldNotEatIngrediant: 2
     canEatIngrediant: 2
     obstacle_Ice: 0
     obstacle_SpiderWeb: 0
@@ -334,7 +334,7 @@ MonoBehaviour:
     obstacle_WoodenBoard: 0
   - style: 2
     shouldNotEatIngrediant: 2
-    canEatIngrediant: 2
+    canEatIngrediant: 3
     obstacle_Ice: 1
     obstacle_SpiderWeb: 0
     obstacle_WoodenBoard: 0

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Proyecto26;
+using SimpleJSON;
 
 public class Game : MonoBehaviour
 {
     private static Game game;
-    public static Game GetInstance(){return game;}
+    public static Game GetInstance() { return game; }
 
     public FridgeSpawner fridgeSpawner;
     public RayCastManager rayCast;
@@ -17,10 +19,11 @@ public class Game : MonoBehaviour
     UIManager ui;
     public SceneState scene;
     public PlayDifference diff; //use send to gameplayUI only
-   
+
     private void Awake()
     {
         game = this;
+        GetHighScore();
     }
 
     private void Start()
@@ -30,10 +33,10 @@ public class Game : MonoBehaviour
         {
             ui.OpenInputNameUI();//print("เข้าครั้งแรก ยังไม่ได้ตั้งชื่อ");
         }
-        else 
+        else
         {
             ui.OpenLobbyUI(); //print("ไม่เข้าครั้งแรก ได้ตั้งชื่อแล้ว");
-        } 
+        }
     }
 
     public void StartGame(PlayDifference playDiff)
@@ -52,6 +55,48 @@ public class Game : MonoBehaviour
         timer.SetRunTime(false);
         ui.UIGamePlay().Close();
         ui.OpenEndGameUI();
+    }
+
+    public void GetHighScore()
+    {
+        string urlData = $"{dataManager.url}/User/userData.json?auth={dataManager.secret}";
+        string playerTag = PlayerPrefs.GetString("PlayerTag");
+        //int scoreGame = 
+        User user = new User();
+        user.userData = new List<User.UserData>();
+
+        RestClient.Get(urlData).Then(response =>
+        {
+            Debug.Log(response.Text);
+            JSONNode jsonNode = JSONNode.Parse(response.Text);
+
+            for (int i = 0; i < jsonNode.Count; i++)
+            {
+                user.userData.Add(new User.UserData(jsonNode[i]["name"], jsonNode[i]["score"], jsonNode[i]["tag"]));
+            }
+
+            //bool isDuplicateTag = false;
+            for (int i = 0; i < user.userData.Count; i++)
+            {
+                if (user.userData[i].tag == playerTag)
+                {
+                    //if (scoreGame > user.userData[i].score) user.userData[i].score = scoreGame;
+                    //isDuplicateTag = true;
+                    PlayerPrefs.SetInt("PlayerHighScore", user.userData[i].score);
+                    UILobby uILobby = ui.UILobby();
+                    if (uILobby != null) uILobby.RefreshHighScore();
+                    print("Save high score from server");
+                }
+            }
+
+            Debug.Log("GetData" + user.userData.Count);
+            //OnGetDone.Invoke();
+            //SetData();
+
+        }).Catch(error =>
+        {
+            Debug.Log("GetHighScore Not Found Data");           
+        });
     }
 }
 

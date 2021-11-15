@@ -56,6 +56,27 @@ public class LevelUnlockItem
     }
 }
 
+[System.Serializable]
+public class User
+{
+    [System.Serializable]
+    public class UserData
+    {
+        public string name;
+        public int score;
+        public string tag;
+
+        public UserData(string name, int score, string tag)
+        {
+            this.name = name;
+            this.score = score;
+            this.tag = tag;
+        }
+    }
+
+    public List<UserData> userData;
+}
+
 public enum IngredientType {SHOULD_NOT_EAT, CAN_EAT}
 public enum PlayDifference { NORMAL, HARD}
 public enum ItemType { FIRE, BROOM, CROWBAR }
@@ -66,6 +87,9 @@ public enum FridgeShelfStyle { EZ1_5, EZ6_10, EZ11_15, EZ16_20, EZ21_25, EZ26_30
 
 public class DataManager : MonoBehaviour
 {
+    public string url = "https://happy-kidney-default-rtdb.asia-southeast1.firebasedatabase.app/";
+    public string secret = "U6YbKtoQ5tcUBci5ErEm1wL8bOYybsR2BcvQRrnu";
+
     [SerializeField] List<IngredientData> ingredientData_SHOULD_NOT_EAT;
     [SerializeField] List<IngredientData> ingredientData_CAN_EAT;
 

@@ -22,8 +22,8 @@ public class UILeaderboard : MonoBehaviour, IUI
     
     public Button closeBtn;
 
-    public string url = "https://happy-kidney-default-rtdb.asia-southeast1.firebasedatabase.app/";
-    public string secret = "U6YbKtoQ5tcUBci5ErEm1wL8bOYybsR2BcvQRrnu";
+    public string url;
+    public string secret;
 
     int scoreGame = 0;
     string playerName;
@@ -37,6 +37,8 @@ public class UILeaderboard : MonoBehaviour, IUI
         sound = SoundManager.GetInstance();
         playerName = PlayerPrefs.GetString("PlayerName");
         playerTag = PlayerPrefs.GetString("PlayerTag");
+        url = game.dataManager.url;
+        secret = game.dataManager.secret;
         if (string.IsNullOrEmpty(playerTag))
         {
             playerTag = playerName + "#" + System.DateTime.Now.ToString("s");
@@ -47,9 +49,9 @@ public class UILeaderboard : MonoBehaviour, IUI
        
         closeBtn.onClick.AddListener(() =>
         {
-            UIManager.GetUI().OpenLobbyUI();
+            if(game.scene == SceneState.GAMEPLAY) UIManager.GetUI().OpenLobbyUI();
             sound.PlaySFXOneShot(SfxClipName.CLICK02);
-            closeBtn.gameObject.SetActive(false);
+            //closeBtn.gameObject.SetActive(false);
             Close();
         });
 
@@ -150,6 +152,7 @@ public class UILeaderboard : MonoBehaviour, IUI
             {
                 if (scoreGame > user.userData[i].score) user.userData[i].score = scoreGame;
                 SetPlayerScore(user.userData[i], i + 1,myScoreObj);
+                PlayerPrefs.GetInt("PlayerHighScore", scoreGame);
                 break;
             }
         }
@@ -187,27 +190,6 @@ public class UILeaderboard : MonoBehaviour, IUI
         Destroy(gameObject);
     }
 
-    [System.Serializable]
-    public class User
-    {
-        [System.Serializable]
-        public class UserData
-        {
-            public string name;
-            public int score;
-            public string tag;
-
-            public UserData(string name,int score, string tag)
-            {
-                this.name = name;
-                this.score = score;              
-                this.tag = tag;              
-            }
-        }
-
-        public List<UserData> userData;
-    }
-
     public User user;
 
     public void GetData()
@@ -225,20 +207,23 @@ public class UILeaderboard : MonoBehaviour, IUI
             {
                 user.userData.Add(new User.UserData(jsonNode[i]["name"], jsonNode[i]["score"], jsonNode[i]["tag"]));               
             }
-           
-            bool isDuplicateTag = false;
-            for (int i = 0; i < user.userData.Count; i++)
-            {
-                if (user.userData[i].tag == playerTag)
-                {
-                    if(scoreGame > user.userData[i].score) user.userData[i].score = scoreGame;
-                    isDuplicateTag = true;
-                }
-            }
 
-            if(!isDuplicateTag)
+            if (game.scene == SceneState.GAMEPLAY)
             {
-                user.userData.Add(new User.UserData(playerName, scoreGame, playerTag));
+                bool isDuplicateTag = false;
+                for (int i = 0; i < user.userData.Count; i++)
+                {
+                    if (user.userData[i].tag == playerTag)
+                    {
+                        if (scoreGame > user.userData[i].score) user.userData[i].score = scoreGame;
+                        isDuplicateTag = true;
+                    }
+                }
+
+                if (!isDuplicateTag)
+                {
+                    user.userData.Add(new User.UserData(playerName, scoreGame, playerTag));
+                }
             }
 
             Debug.Log("GetData" + user.userData.Count);
@@ -248,9 +233,12 @@ public class UILeaderboard : MonoBehaviour, IUI
         }).Catch(error =>
         {
             Debug.Log("Not Found Data");
-            user.userData = new List<User.UserData>();
-            user.userData.Add(new User.UserData(playerName, scoreGame, playerTag));
-            SetData();     
+            if (game.scene == SceneState.GAMEPLAY)
+            {
+                user.userData = new List<User.UserData>();
+                user.userData.Add(new User.UserData(playerName, scoreGame, playerTag));
+                SetData();
+            }             
         });
     }
 

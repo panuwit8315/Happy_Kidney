@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     private UIThrowAway uiThrowAway;
     private UIInputName uiInputName;
     public UIGamePlay UIGamePlay() { if (uiGamePlay == null) OpenGamePlayUI(); return uiGamePlay; } //Game.GetInstance().fridgeSpawner.diff
-    public UILobby UILobby() { if (uiLobby == null) OpenLobbyUI(); return uiLobby; }
+    public UILobby UILobby() { return uiLobby; }
     public UIEndGame UIEndGame() { if (uiEndGame == null) OpenEndGameUI(); return uiEndGame; }
     public UISelectMode UISelectMode() { if (uiSelectMode == null) OpenSelectModeUI(); return uiSelectMode; }
     public UIHint UIHint() {  return uiHint; }
