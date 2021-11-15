@@ -1554,6 +1554,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba693a46fcf4d1448c86cc0f8889760, type: 3}
+--- !u!1 &1118889374 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 541187448924810258, guid: 77573f20f459c424f9298d28cb9b0334,
+    type: 3}
+  m_PrefabInstance: {fileID: 541187450143112930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1118889379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118889374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Trigger:
+    m_IsTriggerExpanded: 1
+    m_Type: 0
+    m_LifecycleEvent: 0
+    m_ApplyRules: 0
+    m_Rules:
+      m_Rules: []
+    m_TriggerBool: 0
+    m_InitTime: 5
+    m_RepeatTime: 5
+    m_Repetitions: 0
+    repetitionCount: 0
+  m_EventPayload:
+    m_IsEventExpanded: 1
+    m_StandardEventType: CustomEvent
+    m_Parameters:
+      m_Parameters: []
+    m_Name: EasyMode
 --- !u!224 &1130934684 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 105245681729305089, guid: f76f24073d34bf149918116e66494b48,
@@ -1703,6 +1739,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131699324}
   m_CullTransparentMesh: 1
+--- !u!1 &1131978494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 541187450484300210, guid: 77573f20f459c424f9298d28cb9b0334,
+    type: 3}
+  m_PrefabInstance: {fileID: 541187450143112930}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1131978499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131978494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -745406591, guid: 220224b43fc464c28bc0e8de8f54a432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Trigger:
+    m_IsTriggerExpanded: 1
+    m_Type: 0
+    m_LifecycleEvent: 0
+    m_ApplyRules: 0
+    m_Rules:
+      m_Rules: []
+    m_TriggerBool: 0
+    m_InitTime: 5
+    m_RepeatTime: 5
+    m_Repetitions: 0
+    repetitionCount: 0
+  m_EventPayload:
+    m_IsEventExpanded: 1
+    m_StandardEventType: CustomEvent
+    m_Parameters:
+      m_Parameters: []
+    m_Name: HardMode
 --- !u!1 &1136887844
 GameObject:
   m_ObjectHideFlags: 0
@@ -3045,6 +3117,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1049307007}
     m_Modifications:
+    - target: {fileID: 541187448924810256, guid: 77573f20f459c424f9298d28cb9b0334,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1118889379}
+    - target: {fileID: 541187448924810256, guid: 77573f20f459c424f9298d28cb9b0334,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 541187448924810256, guid: 77573f20f459c424f9298d28cb9b0334,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Analytics.AnalyticsEventTracker, Unity.Analytics.Tracker
+      objectReference: {fileID: 0}
     - target: {fileID: 541187449158713688, guid: 77573f20f459c424f9298d28cb9b0334,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3069,6 +3156,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -26.141
+      objectReference: {fileID: 0}
+    - target: {fileID: 541187450484300208, guid: 77573f20f459c424f9298d28cb9b0334,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1131978499}
+    - target: {fileID: 541187450484300208, guid: 77573f20f459c424f9298d28cb9b0334,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TriggerEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 541187450484300208, guid: 77573f20f459c424f9298d28cb9b0334,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Analytics.AnalyticsEventTracker, Unity.Analytics.Tracker
       objectReference: {fileID: 0}
     - target: {fileID: 624932080221872454, guid: 77573f20f459c424f9298d28cb9b0334,
         type: 3}

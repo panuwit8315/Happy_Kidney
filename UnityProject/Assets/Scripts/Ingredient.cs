@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class Ingredient : MonoBehaviour
 {
@@ -14,6 +15,10 @@ public class Ingredient : MonoBehaviour
     bool inRubbishBin = false;
     public bool isDroped = false;
     public bool isBehindObstacle = false;
+
+    string binName;
+    
+
     public void Setup(IngredientData data)
     {
         //engName = data.engName;
@@ -34,12 +39,26 @@ public class Ingredient : MonoBehaviour
     {
         transform.position = originalPos;
         GetComponent<SpriteRenderer>().sortingOrder = 0;
+
         if (inRubbishBin)
         {
             FridgeSpawner spawner = Game.GetInstance().fridgeSpawner;
             spawner.AddScoreAfterDropIngredient(data.type);
             gameObject.SetActive(data.type == IngredientType.CAN_EAT);
+
             isDroped = data.type == IngredientType.SHOULD_NOT_EAT;
+
+            if(binName == "RubbishBinL")
+            {
+                Analytics.CustomEvent("RubbishL");
+                print("RubbishBinL Success");
+            }
+            else if (binName == "RubbishBinR")
+            {
+                Analytics.CustomEvent("RubbishR");
+                print("RubbishBinR Success");
+            }
+
             //SoundManager sound = SoundManager.GetInstance();
             if (data.type == IngredientType.SHOULD_NOT_EAT)
             {
@@ -73,6 +92,7 @@ public class Ingredient : MonoBehaviour
     {
         if (collision.CompareTag("RubbishBin"))
         {
+            binName = collision.gameObject.name;
             inRubbishBin = true;
             UIManager.GetUI().UIGamePlay().OpenBinSprite(true, collision.gameObject);
             //print(gameObject.name+ " Hit RubbishBin");

@@ -36,7 +36,13 @@ public class UILeaderboard : MonoBehaviour, IUI
         game = Game.GetInstance();
         sound = SoundManager.GetInstance();
         playerName = PlayerPrefs.GetString("PlayerName");
-        playerTag = PlayerPrefs.GetString("PlayerTag",playerName+"#"+System.DateTime.Now.ToString("s"));
+        playerTag = PlayerPrefs.GetString("PlayerTag");
+        if (string.IsNullOrEmpty(playerTag))
+        {
+            playerTag = playerName + "#" + System.DateTime.Now.ToString("s");
+            PlayerPrefs.SetString("PlayerTag",playerTag);
+        }       
+        
         scoreGame = game.fridgeSpawner.GetScore();
        
         closeBtn.onClick.AddListener(() =>

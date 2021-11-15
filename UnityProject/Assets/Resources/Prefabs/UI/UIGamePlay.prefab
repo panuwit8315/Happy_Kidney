@@ -1843,7 +1843,7 @@ GameObject:
   - component: {fileID: 5347189967032852339}
   - component: {fileID: 5347189967032852348}
   m_Layer: 2
-  m_Name: RubbishBin (1)
+  m_Name: RubbishBinL
   m_TagString: RubbishBin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2049,7 +2049,7 @@ GameObject:
   - component: {fileID: 5347189967468259565}
   - component: {fileID: 5347189967468259566}
   m_Layer: 2
-  m_Name: RubbishBin (1)
+  m_Name: RubbishBinR
   m_TagString: RubbishBin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

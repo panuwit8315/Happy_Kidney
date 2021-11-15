@@ -161,7 +161,7 @@ PlayerSettings:
   overrideDefaultApplicationIdentifier: 0
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 19
-  AndroidTargetSdkVersion: 0
+  AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
@@ -760,11 +760,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: fa924dbc-3f33-4d90-b855-c4dc879b8b8f
+  cloudProjectId: 054840ed-3bab-45b5-a3fd-39579e27f787
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Pick Them Out (1)
-  organizationId: mptong
+  projectName: Happy Kidney
+  organizationId: jorenzo
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   virtualTexturingSupportEnabled: 0
