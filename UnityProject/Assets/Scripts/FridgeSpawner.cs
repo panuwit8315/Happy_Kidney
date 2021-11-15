@@ -73,11 +73,11 @@ public class FridgeSpawner : MonoBehaviour
 
     public int GetFridgeCount()
     {
-        return fridgeCount;
+        return fridgeCount;        
     }
     public void SetFridgeCount(int set)
     {
-        fridgeCount = set;
+        fridgeCount = set;        
     }
 
     public int GetIngredientCount()

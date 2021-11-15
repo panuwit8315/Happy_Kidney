@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager instance;
     public static UIManager GetUI(){ return instance; }
+
+    private System.DateTime startTime, stopTime;
+
     void Awake() 
     { 
         instance = this;
@@ -100,10 +104,22 @@ public class UIManager : MonoBehaviour
         if (g == null) return;
         g.GetComponent<UIHint>().Open();
         uiHint = g.GetComponent<UIHint>();
+
+        //เริ่มนับเวลา
+        startTime = System.DateTime.UtcNow;
     }
     public void CloseUI(UIHint ui)
     {
         uiHint = null;
+
+        //ทำให้หยุดนับเวลาและเซ็ตไว้ในค่า ts
+        stopTime = System.DateTime.UtcNow;
+        System.TimeSpan ts = stopTime - startTime;
+
+        //เช็คว่าเปิดดูปุ่ม Hint กี่วิใน UnityDashboard
+        AnalyticsResult analyticsResult = Analytics.CustomEvent("OpenHint", new Dictionary<string, object> { { "Seconds", ts.Seconds.ToString() } });
+        Debug.Log("analyticResult(OpenHint): " + analyticsResult);
+        Debug.Log(ts);
     }
 
     public void OpenLeaderboardUI()

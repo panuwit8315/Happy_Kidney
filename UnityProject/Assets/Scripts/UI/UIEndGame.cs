@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class UIEndGame : MonoBehaviour, IUI
 {
@@ -11,7 +12,7 @@ public class UIEndGame : MonoBehaviour, IUI
     [SerializeField] Text fridgeText;
     [SerializeField] Text ingredientText;
     SoundManager sound;
-    UIManager ui;
+    UIManager ui;    
 
     public void Open()
     {
@@ -25,7 +26,7 @@ public class UIEndGame : MonoBehaviour, IUI
         int fakeCoin = score / 100;
         scoreText.text = score.ToString("0");
         coinText.text = fakeCoin.ToString("0");
-        fridgeText.text = game.fridgeSpawner.GetFridgeCount().ToString("0");
+        fridgeText.text = game.fridgeSpawner.GetFridgeCount().ToString("0");                
         ingredientText.text = game.fridgeSpawner.GetIngredientCount().ToString("0");
         close.onClick.AddListener(() =>
         {
@@ -35,6 +36,11 @@ public class UIEndGame : MonoBehaviour, IUI
             //close this ui
             Close();
         });
+
+        //เช็คว่าปัดไปกี่ตู้ใน UnityDashboard
+        AnalyticsResult analyticsResult = Analytics.CustomEvent("FridgeCount", new Dictionary<string, object> { { "Fridge", game.fridgeSpawner.GetFridgeCount() } });
+        Debug.Log("analyticResult(FridgeCount): " + analyticsResult);
+        Debug.Log(game.fridgeSpawner.GetFridgeCount());
     }
 
     public void Close()

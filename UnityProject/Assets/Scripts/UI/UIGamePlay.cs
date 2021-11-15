@@ -22,7 +22,7 @@ public class UIGamePlay : MonoBehaviour, IUI
     LevelUnlockItem lvUnlockItem;
     bool nextSpawnScoreNotf = true;
     List<string> scoreQ = new List<string>();
-    SoundManager sound = SoundManager.GetInstance();
+    SoundManager sound = SoundManager.GetInstance();    
 
     public void Open()
     {
@@ -36,7 +36,7 @@ public class UIGamePlay : MonoBehaviour, IUI
         {
             sound.PlaySFXOneShot(SfxClipName.CLICK02);
             UIManager.GetUI().OpenHintUI();
-            hintNoft.SetActive(false);
+            hintNoft.SetActive(false);            
         });
 
         PlayDifference currentDiff = Game.GetInstance().diff;
@@ -50,7 +50,8 @@ public class UIGamePlay : MonoBehaviour, IUI
             lvUnlockItem = new LevelUnlockItem(1, 1, 1);
             print("OpenUIGamPlay"+currentDiff);
         }
-    }
+    }        
+
     public void Close()
     {
         GetComponent<Animator>().SetTrigger("MoveOut");
