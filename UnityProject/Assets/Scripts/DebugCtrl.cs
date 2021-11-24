@@ -137,11 +137,29 @@ public class DebugCtrl : MonoBehaviour
             Log("ลดเวลาเหลือ 20 วินาที");
             return;
         }
+        else if (input == "resettutorial" || input == "Resettutorial" || input == "resetTutorial" || input == "ResetTutorial" || input == "reset tutorial" || input == "Reset tutorial" || input == "reset Tutorial" || input == "Reset Tutorial")
+        {
+            if (game.scene != SceneState.LOBBY)
+            {
+                Log("ต้องสั่งในหน้า LOBBY");
+                return;
+            }
+            PlayerPrefs.SetString("TutorialComplete", "No");
+            Log("Reset Tutorial Complete");
+            return;
+        }
         else if (input == "unlock" || input == "Unlock")
         {
             PlayerPrefs.SetInt("HighestFridgeLv", 40);
             Log("ปลดล็อก โหมดยากแล้ว");
             Log("ลองเข้าหน้าต่างเลือกโหมดดู");
+            return;
+        }
+        else if (input == "removedata" || input == "Removedata" || input == "removeData" || input == "RemoveData" || input == "remove data" || input == "Remove data" || input == "remove Data" || input == "Remove Data")
+        {
+            PlayerPrefs.DeleteAll();
+            Log("Removedata แล้ว");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             return;
         }
 

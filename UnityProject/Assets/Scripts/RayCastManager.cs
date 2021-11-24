@@ -30,7 +30,17 @@ public class RayCastManager : MonoBehaviour
                     Game.GetInstance().fridgeSpawner.GetFridgeObj().DisableOtherIngrediantCol(currentHitObj.name);
                     UIManager.GetUI().UIGamePlay().EnableColAllItem(false);
                     UIManager.GetUI().UIGamePlay().MoveInRubbishBin();
-                    currentHitObj.GetComponent<SpriteRenderer>().sortingLayerName = "Obstacle";
+                    
+                    UITutorial tutorial = UIManager.GetUI().UITutorial();
+                    if(tutorial != null)
+                    {
+                        tutorial.OnClickIngreObj();
+                        currentHitObj.GetComponent<SpriteRenderer>().sortingLayerName = "Popup";
+                    }
+                    else
+                    {
+                        currentHitObj.GetComponent<SpriteRenderer>().sortingLayerName = "Obstacle";
+                    }
                 }
                 else if (currentHitObj.CompareTag(itemTag))
                 {
@@ -82,11 +92,22 @@ public class RayCastManager : MonoBehaviour
             }
             else if (currentHitObj.CompareTag(ingredenteTag))
             {
-                Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(true);
+                
+                UITutorial tutorial = UIManager.GetUI().UITutorial();
+                if (tutorial != null)
+                {
+                    currentHitObj.GetComponent<SpriteRenderer>().sortingLayerName = "Popup";
+                    Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(true,true);
+                }
+                else
+                {
+                    currentHitObj.GetComponent<SpriteRenderer>().sortingLayerName = "Ingredente";
+                    Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(true);
+                }
+                
                 currentHitObj.GetComponent<Ingredient>().BackToSpawnPoint();
                 UIManager.GetUI().UIGamePlay().MoveOutRubbishBin();
-                UIManager.GetUI().UIGamePlay().EnableColAllItem(true);
-                currentHitObj.GetComponent<SpriteRenderer>().sortingLayerName = "Ingredente";
+                UIManager.GetUI().UIGamePlay().EnableColAllItem(true);                
             }
             else if (currentHitObj.CompareTag(itemTag))
             {
@@ -95,7 +116,7 @@ public class RayCastManager : MonoBehaviour
                     UIManager.GetUI().UIGamePlay().EnableColAllItem(true);
                     currentHitObj.GetComponent<ItemBtn>().currentItemObj.GetComponent<ItemObj>().ActiveItem();
                     currentHitObj.GetComponent<ItemBtn>().DestroyItemObj();
-                    Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(true);
+                    if(UIManager.GetUI().UITutorial() == null) Game.GetInstance().fridgeSpawner.GetFridgeObj().EnableAllIngredintCol(true);
                 }              
             }
             currentHitObj = null;

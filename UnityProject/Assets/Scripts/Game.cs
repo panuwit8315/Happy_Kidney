@@ -42,11 +42,11 @@ public class Game : MonoBehaviour
     public void StartGame(PlayDifference playDiff)
     {
         diff = playDiff;
+        ui.OpenGamePlayUI();
         timer.SesetTime();
-        timer.SetRunTime(true);
+        timer.SetRunTime(true);       
         fridgeSpawner.ResetSpawner();
-        fridgeSpawner.LetSpawner(diff);
-        ui.OpenGamePlayUI();// playDiff);
+        fridgeSpawner.LetSpawner(diff);     
     }
 
     public void EndGame()
@@ -61,7 +61,6 @@ public class Game : MonoBehaviour
     {
         string urlData = $"{dataManager.url}/User/userData.json?auth={dataManager.secret}";
         string playerTag = PlayerPrefs.GetString("PlayerTag");
-        //int scoreGame = 
         User user = new User();
         user.userData = new List<User.UserData>();
 
@@ -75,13 +74,10 @@ public class Game : MonoBehaviour
                 user.userData.Add(new User.UserData(jsonNode[i]["name"], jsonNode[i]["score"], jsonNode[i]["tag"]));
             }
 
-            //bool isDuplicateTag = false;
             for (int i = 0; i < user.userData.Count; i++)
             {
                 if (user.userData[i].tag == playerTag)
                 {
-                    //if (scoreGame > user.userData[i].score) user.userData[i].score = scoreGame;
-                    //isDuplicateTag = true;
                     PlayerPrefs.SetInt("PlayerHighScore", user.userData[i].score);
                     UILobby uILobby = ui.UILobby();
                     if (uILobby != null) uILobby.RefreshHighScore();
@@ -90,8 +86,6 @@ public class Game : MonoBehaviour
             }
 
             Debug.Log("GetData" + user.userData.Count);
-            //OnGetDone.Invoke();
-            //SetData();
 
         }).Catch(error =>
         {

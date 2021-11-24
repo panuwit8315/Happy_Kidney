@@ -168,4 +168,16 @@ public class DataManager : MonoBehaviour
         Debug.LogError("GetLevelUnlockItem In DataManager Item:");
         return unlockItem;
     }
+
+    public int GetFristLevelObstacle()
+    {
+        for (int i = 1; i < normalDifLv.Count; i++)
+        {
+            if (normalDifLv[i].obstacle_Ice > 0 || normalDifLv[i].obstacle_SpiderWeb > 0 || normalDifLv[i].obstacle_WoodenBoard > 0)
+            {
+                return i;
+            }
+        }
+        return 100000;
+    }
 }

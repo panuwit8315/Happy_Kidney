@@ -29,6 +29,7 @@ public class Obstacle : MonoBehaviour
     public void EnableColBehindIngredient()
     {
         behindIngredientObj.GetComponent<Ingredient>().isBehindObstacle = false;
+        behindIngredientObj.GetComponent<BoxCollider2D>().enabled = true;
         GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<SpriteRenderer>().enabled = false;
     }

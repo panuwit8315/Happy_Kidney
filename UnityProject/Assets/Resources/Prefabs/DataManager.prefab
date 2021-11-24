@@ -43,6 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f827bdeaca52094cac87c90f12ef70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  url: https://happy-kidney-default-rtdb.asia-southeast1.firebasedatabase.app/
+  secret: U6YbKtoQ5tcUBci5ErEm1wL8bOYybsR2BcvQRrnu
   ingredientData_SHOULD_NOT_EAT:
   - engName: Orange
     thName: "\u0E2A\u0E49\u0E21"
@@ -273,13 +275,13 @@ MonoBehaviour:
     obstacle_SpiderWeb: 0
     obstacle_WoodenBoard: 0
   - style: 0
-    shouldNotEatIngrediant: 1
+    shouldNotEatIngrediant: 2
     canEatIngrediant: 1
     obstacle_Ice: 0
     obstacle_SpiderWeb: 0
     obstacle_WoodenBoard: 0
   - style: 0
-    shouldNotEatIngrediant: 1
+    shouldNotEatIngrediant: 2
     canEatIngrediant: 1
     obstacle_Ice: 0
     obstacle_SpiderWeb: 0

@@ -19,7 +19,7 @@ public class UIInputName : MonoBehaviour, IUI
 
     public void Close()
     {
-        //GetComponent<Animator>().SetTrigger("MoveOut");
+        GetComponent<Animator>().SetTrigger("MoveOut");
         Invoke("DestroyObj", 0.5f);
     }
 

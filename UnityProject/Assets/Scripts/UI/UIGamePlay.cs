@@ -16,8 +16,16 @@ public class UIGamePlay : MonoBehaviour, IUI
     [SerializeField] GameObject addScoreNoftPos;
     [SerializeField] GameObject addTimeNotfPos;
     [SerializeField] Button pauseBtn;
-    [SerializeField] Button hintBtn;
+    public Button hintBtn;
     [SerializeField] GameObject hintNoft;
+
+    [Header("Mask To Tutorial UI")]
+    public GameObject mask_frigeOpen_UI;
+    public GameObject mask_time_score_UI;
+    public GameObject mask_level_UI;
+    public GameObject mask_item_UI;
+    public GameObject mask_combobar_UI;
+    public GameObject mask_hintBtn_UI;
 
     LevelUnlockItem lvUnlockItem;
     bool nextSpawnScoreNotf = true;
@@ -62,6 +70,14 @@ public class UIGamePlay : MonoBehaviour, IUI
     {
         UIManager.GetUI().CloseUI(this);
         Destroy(gameObject);
+    }
+
+    public void CopyFridgeOpenMaskAndOpenTutorial()
+    {
+        GameObject m = Game.GetInstance().fridgeSpawner.currentFridgeObj.GetComponent<Fridge>().mask_fridge_close;
+        mask_frigeOpen_UI = Instantiate(m, m.transform.position,m.transform.rotation,gameObject.transform);
+        mask_frigeOpen_UI.transform.localScale = m.transform.localScale*20;
+        UIManager.GetUI().OpenTutorialUI();
     }
 
     public void TimeAlert()
@@ -205,4 +221,17 @@ public class UIGamePlay : MonoBehaviour, IUI
     {
         if(rubbishBinAnim.GetCurrentAnimatorStateInfo(0).IsName("MoveIn"))rubbishBinAnim.SetTrigger("MoveOut");       
     }
+
+    public void EnebleButton(bool isOn)
+    {
+        hintBtn.enabled = isOn;
+        pauseBtn.enabled = isOn;
+    }
+
+    public void SetLayerRubbishBin(string layerNameToSet)
+    {
+        rubbishBinAnim.gameObject.transform.Find("RubbishBin_Left/RubbishBinL").GetComponent<SpriteRenderer>().sortingLayerName = layerNameToSet;
+        rubbishBinAnim.gameObject.transform.Find("RubbishBin_Right/RubbishBinR").GetComponent<SpriteRenderer>().sortingLayerName = layerNameToSet;
+    }
+
 }

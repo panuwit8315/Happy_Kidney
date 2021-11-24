@@ -29,14 +29,14 @@ public class UIManager : MonoBehaviour
     private UITutorial uiTutorial;
     private UIThrowAway uiThrowAway;
     private UIInputName uiInputName;
-    public UIGamePlay UIGamePlay() { if (uiGamePlay == null) OpenGamePlayUI(); return uiGamePlay; } //Game.GetInstance().fridgeSpawner.diff
+    public UIGamePlay UIGamePlay() { return uiGamePlay; } //Game.GetInstance().fridgeSpawner.diff
     public UILobby UILobby() { return uiLobby; }
-    public UIEndGame UIEndGame() { if (uiEndGame == null) OpenEndGameUI(); return uiEndGame; }
+    public UIEndGame UIEndGame() { return uiEndGame; }
     public UISelectMode UISelectMode() { if (uiSelectMode == null) OpenSelectModeUI(); return uiSelectMode; }
     public UIHint UIHint() {  return uiHint; }
     public UILeaderboard UILeaderboard() { if (uiLeaderboard == null) OpenLeaderboardUI(); return uiLeaderboard; }
     public UIPause UIPause() { if (uiPause == null) OpenPauseUI(); return uiPause; }
-    public UITutorial UITutorial() { if (uiTutorial == null) OpenTutorialUI(); return uiTutorial; }
+    public UITutorial UITutorial() { return uiTutorial; }
     public UIThrowAway UIThrowAway() { return uiThrowAway; }
     public UIInputName UIInputName() { return uiInputName; }
 
@@ -73,9 +73,9 @@ public class UIManager : MonoBehaviour
         if (GetComponentInChildren<UIEndGame>() != null) return;
 
         GameObject g = SpawnObj("Prefabs/UI/UIEndGame");
-        if (g == null) return;
-        g.GetComponent<UIEndGame>().Open();
+        if (g == null) return;       
         uiEndGame = g.GetComponent<UIEndGame>();
+        g.GetComponent<UIEndGame>().Open();
     }
     public void CloseUI(UIEndGame ui)
     {
@@ -119,7 +119,7 @@ public class UIManager : MonoBehaviour
         //เช็คว่าเปิดดูปุ่ม Hint กี่วิใน UnityDashboard
         AnalyticsResult analyticsResult = Analytics.CustomEvent("OpenHint", new Dictionary<string, object> { { "Seconds", ts.Seconds.ToString() } });
         Debug.Log("analyticResult(OpenHint): " + analyticsResult);
-        Debug.Log(ts);
+        //Debug.Log(ts);
     }
 
     public void OpenLeaderboardUI()
@@ -156,8 +156,9 @@ public class UIManager : MonoBehaviour
 
         GameObject g = SpawnObj("Prefabs/UI/UITutorial");
         if (g == null) return;
-        g.GetComponent<UITutorial>().Open();
         uiTutorial = g.GetComponent<UITutorial>();
+        g.GetComponent<UITutorial>().Open();
+        Game.GetInstance().timer.isRunTime = false;
     }
     public void CloseUI(UITutorial ui)
     {

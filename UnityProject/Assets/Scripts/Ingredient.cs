@@ -5,11 +5,7 @@ using UnityEngine.Analytics;
 
 public class Ingredient : MonoBehaviour
 {
-    //[SerializeField] string engName;
-    //[SerializeField] string thName;
-    //[SerializeField] string dec;
-    //[SerializeField] IngredientType type;
-    [SerializeField] IngredientData data;
+    public IngredientData data;
 
     Vector3 originalPos;
     bool inRubbishBin = false;
@@ -17,16 +13,16 @@ public class Ingredient : MonoBehaviour
     public bool isBehindObstacle = false;
 
     string binName;
-    
+
+    //public delegate void OnBackToSpawnPoint(bool isbin);
+    //public OnBackToSpawnPoint onBackToSpawnPoint;
+    //void NotDoing(bool isbin) { }
 
     public void Setup(IngredientData data)
     {
-        //engName = data.engName;
-        //thName = data.thName;
-        //dec = data.dec;
-        //type = data.type;
         this.data = data;
-        GetComponent<SpriteRenderer>().sprite = data.sprite;      
+        GetComponent<SpriteRenderer>().sprite = data.sprite;
+        //onBackToSpawnPoint+=NotDoing;
     }
 
     public void OnDrag(float xPos, float yPos)
@@ -59,28 +55,21 @@ public class Ingredient : MonoBehaviour
                 print("RubbishBinR Success");
             }
 
-            //SoundManager sound = SoundManager.GetInstance();
             if (data.type == IngredientType.SHOULD_NOT_EAT)
             {
                 spawner.AddIngredientCount(1);
                 spawner.AddDataIngredientThrowAway(data);
                 spawner.GetFridgeObj().CheckIngrediant();
             }
-            /*{
-                if (Game.GetInstance().fridgeSpawner.GetFridgeObj().CheckIngrediant())
-                {
-                    sound.PlaySFXOneShot(SfxClipName.FRIDGECOMPLETE);
-                }
-                else
-                {
-                    sound.PlaySFXOneShot(SfxClipName.PICKOUTCORRECT02);
-                }
-            }
-            else
+
+            UITutorial tutorial = UIManager.GetUI().UITutorial();
+            if (tutorial != null)
             {
-                sound.PlaySFXOneShot(SfxClipName.PICKOUTFAIL01);
-            }*/
+                tutorial.IngreBackToSpawnPoint();
+            }
         }
+        //onBackToSpawnPoint(inRubbishBin);
+        
     }
 
     public void SetOriginalPos()

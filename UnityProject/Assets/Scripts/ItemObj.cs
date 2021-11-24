@@ -52,7 +52,19 @@ public class ItemObj : MonoBehaviour
         Game game = Game.GetInstance();
         FridgeSpawner spawner = game.fridgeSpawner;
         if (currentObstacle == null) return;
-        if (!game.timer.isRunTime) return;
+        if (!game.timer.isRunTime) 
+        {
+            UITutorial tutorial = UIManager.GetUI().UITutorial();
+            if(tutorial != null)
+            {
+                tutorial.OnUseItem();
+            }
+            else
+            {
+                return;
+            }
+        }
+        
         if (spawner.currentFridgeObj == null) return;
 
         //ActiveItem
@@ -62,11 +74,13 @@ public class ItemObj : MonoBehaviour
             obstacle.EnableColBehindIngredient();
             // + Score
             spawner.AddScoreAfterUseItem(true);
+            SoundManager.GetInstance().PlaySFXOneShot(SfxClipName.CLICK02);
         }
         else //ใช้ item ไม่สำเร็จ
         {
             // - Score
             spawner.AddScoreAfterUseItem(false);
+            SoundManager.GetInstance().PlaySFXOneShot(SfxClipName.PICKOUTFAIL01);
         }
         
     }

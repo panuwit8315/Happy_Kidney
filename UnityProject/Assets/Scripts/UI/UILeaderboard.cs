@@ -13,6 +13,7 @@ public class UILeaderboard : MonoBehaviour, IUI
     SoundManager sound;
     [SerializeField] Transform panel;
     [SerializeField] GameObject temp;
+    [SerializeField] Text messgeText;
     [SerializeField] Button leftBtn, rightBtn;
     [SerializeField] int currentTab, maxTab, maxSpawnPerTab;
     [SerializeField] List<User.UserData> dataToShow;
@@ -39,6 +40,8 @@ public class UILeaderboard : MonoBehaviour, IUI
         playerTag = PlayerPrefs.GetString("PlayerTag");
         url = game.dataManager.url;
         secret = game.dataManager.secret;
+        myScoreObj.transform.Find("Name").GetComponent<Text>().text = playerName;
+
         if (string.IsNullOrEmpty(playerTag))
         {
             playerTag = playerName + "#" + System.DateTime.Now.ToString("s");
@@ -66,6 +69,7 @@ public class UILeaderboard : MonoBehaviour, IUI
         CalMaxTab(); //Debug.Log("CalMaxTab" + user.userData.Count);
         OpenTab(1); //Debug.Log("OpenTab" + user.userData.Count);
         SetMyScore();
+        messgeText.gameObject.SetActive(false);
         //print("AddData()");
     }
 
@@ -152,7 +156,7 @@ public class UILeaderboard : MonoBehaviour, IUI
             {
                 if (scoreGame > user.userData[i].score) user.userData[i].score = scoreGame;
                 SetPlayerScore(user.userData[i], i + 1,myScoreObj);
-                PlayerPrefs.GetInt("PlayerHighScore", scoreGame);
+                PlayerPrefs.SetInt("PlayerHighScore", user.userData[i].score);
                 break;
             }
         }
@@ -233,6 +237,7 @@ public class UILeaderboard : MonoBehaviour, IUI
         }).Catch(error =>
         {
             Debug.Log("Not Found Data");
+            messgeText.text = "ไม่สามารถโหลดข้อมูลได้...\nกรุณาเช็คการเชื่มต่ออินเตอร์เน็ตก่อนเล่นเกม";
             if (game.scene == SceneState.GAMEPLAY)
             {
                 user.userData = new List<User.UserData>();

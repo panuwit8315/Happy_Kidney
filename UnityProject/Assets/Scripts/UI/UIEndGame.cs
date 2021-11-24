@@ -6,11 +6,17 @@ using UnityEngine.Analytics;
 
 public class UIEndGame : MonoBehaviour, IUI
 {
-    [SerializeField] Button close;
+    public Button close;
     [SerializeField] Text scoreText;
     [SerializeField] Text coinText;
     [SerializeField] Text fridgeText;
     [SerializeField] Text ingredientText;
+
+    [Header("Mask To Tutorial UI")]
+    public GameObject mask_coin_UI;
+    public GameObject mask_fridge_UI;
+    public GameObject mask_ingre_UI;
+
     SoundManager sound;
     UIManager ui;    
 
@@ -46,10 +52,18 @@ public class UIEndGame : MonoBehaviour, IUI
             Close();
         });
 
+        //OpenTutorialUI
+        if (game.fridgeSpawner.diff == PlayDifference.NORMAL && PlayerPrefs.GetString("TutorialComplete", "No") != "Yes") //OpenTutorialUI
+        {
+            PlayerPrefs.SetInt("TutorialStep", 10);
+            ui.OpenTutorialUI();
+            close.enabled = false;
+        }
+
         //เช็คว่าปัดไปกี่ตู้ใน UnityDashboard
         AnalyticsResult analyticsResult = Analytics.CustomEvent("FridgeCount", new Dictionary<string, object> { { "Fridge", game.fridgeSpawner.GetFridgeCount() } });
         Debug.Log("analyticResult(FridgeCount): " + analyticsResult);
-        Debug.Log(game.fridgeSpawner.GetFridgeCount());
+        //Debug.Log(game.fridgeSpawner.GetFridgeCount());
     }
 
     public void Close()

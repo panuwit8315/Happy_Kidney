@@ -18,12 +18,17 @@ public class Fridge : MonoBehaviour //default
     [SerializeField] GameObject fridgeDoor;
     [SerializeField] GameObject spawnPoints;
     [SerializeField] int fridgeLv;
+    [SerializeField] PlayDifference playDiff;
     [SerializeField] GameObject ingredientPrefab;
-    [SerializeField] List<GameObject> ingredientObjs = new List<GameObject>();
+    public List<GameObject> ingredientObjs = new List<GameObject>();
     List<GameObject> spawnList = new List<GameObject>();
     List<GameObject> spawnObstaclePoint = new List<GameObject>();
+    List<SpriteRenderer> obstaccleSprites = new List<SpriteRenderer>();
     [SerializeField] GameObject obstaclePrefab;
     public bool nextSpawn = true;
+
+    [Header("Mask To Tutorial UI")]
+    public GameObject mask_fridge_close;
 
     void Start()
     {
@@ -36,6 +41,7 @@ public class Fridge : MonoBehaviour //default
         fridgeDoor.SetActive(fridgeLv == 1);
         gameObject.name = "Fridge Lv" + fridgeLv;
         this.fridgeLv = fridgeLv;
+        this.playDiff = playDiff;
 
         DataManager dataM = Game.GetInstance().dataManager;
         DifferenceLvData diff = dataM.GetDifferenceByLy(fridgeLv, playDiff);
@@ -69,20 +75,12 @@ public class Fridge : MonoBehaviour //default
         {
             ingredientData_canEat.Add(dataM.GetIngredientData(IngredientType.CAN_EAT)[i]);
         }
-        //foreach (IngredientData data in dataM.GetIngredientData(IngredientType.CAN_EAT))
-        //{
-        //    ingredientData_canEat.Add(data);
-        //}
 
         List<IngredientData> ingredientData_notEat = new List<IngredientData>();
         for (int i = 0; i < maxRancomIngNotEat; i++)
         {
             ingredientData_notEat.Add(dataM.GetIngredientData(IngredientType.SHOULD_NOT_EAT)[i]);
         }
-        //foreach (IngredientData data in dataM.GetIngredientData(IngredientType.SHOULD_NOT_EAT))
-        //{
-        //    ingredientData_notEat.Add(data);
-        //}
 
         int allSpawn = canEat + notEat;
         if (allSpawn > spawnPoints.transform.childCount) 
@@ -110,11 +108,17 @@ public class Fridge : MonoBehaviour //default
         }
 
         //Setup Obstacle
+        List<SpriteRenderer> obstacclesprites = new List<SpriteRenderer>();
         foreach(GameObject ingre in ingredientObjs)
         {
-            spawnObstaclePoint.Add(ingre);
+            if(dataM.GetFristLevelObstacle() == fridgeLv)
+            {
+                if (ingre.transform.parent.gameObject.name != "NoTutorial") spawnObstaclePoint.Add(ingre);
+            }
+            else spawnObstaclePoint.Add(ingre);
         }
         int obsCount = 0;
+        print("Lv."+fridgeLv+ "; spawnObstaclePoint.count="+ spawnObstaclePoint.Count);
         for(int ice = diff.obstacle_Ice; ice > 0; ice--)
         {
             obsCount++;
@@ -132,19 +136,39 @@ public class Fridge : MonoBehaviour //default
         }
 
         //OpenHint
-        if(fridgeLv == 1 ) //&& playDiff == PlayDifference.NORMAL)
+        if (fridgeLv == 1) //&& playDiff == PlayDifference.NORMAL)
         {
             UIManager ui = UIManager.GetUI();
             Game game = Game.GetInstance();
             ui.OpenHintUI();
-            game.timer.isRunTime = false;           
+            game.timer.isRunTime = false;
+            ui.UIHint().closeBtn?.onClick.RemoveAllListeners();
             ui.UIHint().closeBtn?.onClick.AddListener(() =>
             {
+                SoundManager.GetInstance().PlaySFXOneShot(SfxClipName.CLICK02);
+                ui.UIHint().Close();
                 ui.UIGamePlay().SetHintNoft(false);
-                game.timer.isRunTime = true;               
+                game.timer.isRunTime = true;
+                game.rayCast.enabled = true;
+
+                //OpenTutorialUI
+                if (playDiff == PlayDifference.NORMAL && PlayerPrefs.GetString("TutorialComplete", "No") != "Yes")  //OpenTutorialUI
+                {
+                    PlayerPrefs.SetInt("TutorialStep", 0);
+                    ui.UIGamePlay().CopyFridgeOpenMaskAndOpenTutorial();
+                }
             });
         }
-        
+        else if (fridgeLv == dataM.GetFristLevelObstacle() && playDiff == PlayDifference.NORMAL) // && PlayerPrefs.GetString("TutorialComplete","No")!="Yes"); //OpenTutorialUI
+        {
+            print("fridgeLv=" + fridgeLv + "; GetFristLevelObstacle=" + dataM.GetFristLevelObstacle());
+            PlayerPrefs.SetInt("TutorialStep", 9);
+            UIManager.GetUI().OpenTutorialUI();
+            foreach(SpriteRenderer s in obstaccleSprites)
+            {
+                s.sortingLayerName = "UI";
+            }
+        }         
     }
 
     private void Update()
@@ -228,9 +252,20 @@ public class Fridge : MonoBehaviour //default
     {
         fridgeDoor.SetActive(false);
         SetOriginalPos();
-        EnableAllIngredintCol(true);
+        if(UIManager.GetUI().UITutorial() == null) EnableAllIngredintCol(true);
+        else
+        {
+            if (PlayerPrefs.GetInt("TutorialStep") < 3) EnableAllIngredintCol(true);
+            else EnableAllIngredintCol(false);
+        }
         if(fridgeLv==1) SoundManager.GetInstance().PlaySFXOneShot(SfxClipName.CLICK02);
         //Complete();
+
+        UITutorial tutorial = UIManager.GetUI().UITutorial();
+        if (tutorial != null)
+        {
+            tutorial.OpenTheFridge();
+        }
     }
 
     void SetOriginalPos()
@@ -248,6 +283,13 @@ public class Fridge : MonoBehaviour //default
         EnableAllIngredintCol(false);
         FridgeSpawner spawner = Game.GetInstance().fridgeSpawner;
         DebugCtrl.GetDebug().Log($"Complete Lv.{fridgeLv}  Score:{spawner.GetScore()} Ingre:{spawner.GetIngredientCount()}");
+
+        if (fridgeLv == 1 && playDiff == PlayDifference.NORMAL && PlayerPrefs.GetString("TutorialComplete","No")!="Yes") //OpenTutorialUI
+        {
+            PlayerPrefs.SetInt("TutorialStep", 7);
+            UIManager.GetUI().OpenTutorialUI();
+            //EnableAllIngredintCol(false);
+        }
     }
 
     void SpawnIngredient(IngredientData data,int count)
@@ -267,13 +309,14 @@ public class Fridge : MonoBehaviour //default
         Transform transform = spawnObstaclePoint[random].transform.parent;
         GameObject g = Instantiate(obstaclePrefab, transform);
         g.name = count.ToString("00") + " :" + obstacleType;
-        g.GetComponent<Obstacle>().SetUp(obstacleType, spawnObstaclePoint[random]);       
+        g.GetComponent<Obstacle>().SetUp(obstacleType, spawnObstaclePoint[random]);
+        obstaccleSprites.Add(g.GetComponent<SpriteRenderer>());
         print("SpwanObstacle :" + obstacleType);
 
         spawnObstaclePoint.RemoveAt(random);
     }
 
-    public void EnableAllIngredintCol(bool set)
+    public void EnableAllIngredintCol(bool set, bool isOnTutorial = false)
     {
         foreach (GameObject g in ingredientObjs) 
         {
@@ -282,7 +325,16 @@ public class Fridge : MonoBehaviour //default
                 BoxCollider2D col = g.GetComponent<BoxCollider2D>();
                 if (!g.GetComponent<Ingredient>().isBehindObstacle)
                 {
-                    col.enabled = set;
+                    if (isOnTutorial)
+                    {
+                        if (g.GetComponent<Ingredient>().data.type == IngredientType.SHOULD_NOT_EAT) col.enabled = set;
+                        else col.enabled = false;
+                    }
+                    else
+                    {
+                        col.enabled = set;
+                    }
+                    
                 }
                 else
                 {
