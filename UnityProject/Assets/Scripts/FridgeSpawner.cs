@@ -200,6 +200,10 @@ public class FridgeSpawner : MonoBehaviour
     {
         return score;
     }
+    public void SetScore(int set)
+    {
+        score = set;
+    }
 
     public void ClearFridge()
     {

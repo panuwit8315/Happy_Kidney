@@ -66,7 +66,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 561e22baf6b248841bf2ca0f49128f7c, type: 3}
+    m_Font: {fileID: 12800000, guid: 4918aebe39a2c3f4888d69ab20e07d0d, type: 3}
     m_FontSize: 31
     m_FontStyle: 2
     m_BestFit: 0
@@ -288,7 +288,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: fa56a43915a3e5c4c8aca036b286c4f2, type: 3}
+    m_Font: {fileID: 12800000, guid: c9e901d4aa311f54394d85260def3954, type: 3}
     m_FontSize: 31
     m_FontStyle: 0
     m_BestFit: 1
@@ -576,7 +576,7 @@ RectTransform:
   m_GameObject: {fileID: 3295604431160410599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.981959, y: 0.981959, z: 0.981959}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3295604430152700070}
   m_Father: {fileID: 6124129225926944839}
@@ -584,8 +584,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.6074996, y: -248.33499}
-  m_SizeDelta: {x: 411, y: 146.03}
+  m_AnchoredPosition: {x: 1, y: -278.83}
+  m_SizeDelta: {x: 402.98, y: 128.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3295604431160410595
 CanvasRenderer:
@@ -615,7 +615,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0811e0f312620b4b824fd84485cf544, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 747e974136529934ea6965343f01a267, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -727,7 +727,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0.23584908, g: 0.23584908, b: 0.23584908, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -735,7 +735,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a5280c1abdca00848b4d59b051b37c17, type: 3}
+    m_Font: {fileID: 12800000, guid: c9e901d4aa311f54394d85260def3954, type: 3}
     m_FontSize: 70
     m_FontStyle: 0
     m_BestFit: 1
@@ -748,4 +748,4 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0E01\u0E23\u0E38\u0E13\u0E32\u0E15\u0E31\u0E49\u0E07\u0E0A\u0E37\u0E48\u0E2D
-    \n\u0E44\u0E21\u0E48\u0E40\u0E01\u0E34\u0E19 12 \u0E15\u0E31\u0E27\u0E2D\u0E31\u0E29\u0E23"
+    \n\u0E44\u0E21\u0E48\u0E40\u0E01\u0E34\u0E19 12 \u0E15\u0E31\u0E27\u0E2D\u0E31\u0E01\u0E29\u0E23"

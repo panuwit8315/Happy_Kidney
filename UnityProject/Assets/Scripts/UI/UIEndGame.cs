@@ -11,6 +11,7 @@ public class UIEndGame : MonoBehaviour, IUI
     [SerializeField] Text coinText;
     [SerializeField] Text fridgeText;
     [SerializeField] Text ingredientText;
+    [SerializeField] Text bonusText;
 
     [Header("Mask To Tutorial UI")]
     public GameObject mask_coin_UI;
@@ -29,6 +30,10 @@ public class UIEndGame : MonoBehaviour, IUI
         if (ui.UIHint() != null) ui.UIHint().Close();
         sound.PlaySFXOneShot(SfxClipName.TIMEOUT);
         int score = game.fridgeSpawner.GetScore();
+        int bonus = PlayerPrefs.GetInt("FurnitureBonus", 0);
+        bonusText.text = "คะแนน +" + bonus + "%";
+        score = (score / 100) * (100+bonus);
+        game.fridgeSpawner.SetScore(score);
         int coin = score / 100;
         scoreText.text = score.ToString("0");
         coinText.text = coin.ToString("0");

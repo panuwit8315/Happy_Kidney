@@ -34,7 +34,8 @@ public class UIGamePlay : MonoBehaviour, IUI
 
     public void Open()
     {
-        Game.GetInstance().scene = SceneState.GAMEPLAY;
+        Game game = Game.GetInstance();
+        game.scene = SceneState.GAMEPLAY;
         pauseBtn?.onClick.AddListener(() =>
         {
             sound.PlaySFXOneShot(SfxClipName.CLICK02);
@@ -58,6 +59,7 @@ public class UIGamePlay : MonoBehaviour, IUI
             lvUnlockItem = new LevelUnlockItem(1, 1, 1);
             print("OpenUIGamPlay"+currentDiff);
         }
+        game.bg.sprite = game.dataManager.GetFurnitureData((FurnitureStyle)PlayerPrefs.GetInt("Furniture_BG", 1), FurnitureType.BG).sprite;
     }        
 
     public void Close()

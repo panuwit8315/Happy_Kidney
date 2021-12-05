@@ -126,6 +126,17 @@ public class DebugCtrl : MonoBehaviour
             Log("ลดเวลาเหลือ 5 วินาที");
             return;
         }
+        if (input == "coin999999" || input == "coin 999999" || input == "Coin999999" || input == "Coin 999999")
+        {
+            if (game.scene != SceneState.LOBBY)
+            {
+                Log("ต้องสั่งในหน้า LOBBY");
+                return;
+            }
+            PlayerPrefs.SetInt("PlayerCoin", 999999);
+            Log("PlayerCoin = 999999");
+            return;
+        }
         else if (input == "time20" || input == "Time20" || input == "time 20" || input == "Time 20")
         {
             if (game.scene != SceneState.GAMEPLAY)

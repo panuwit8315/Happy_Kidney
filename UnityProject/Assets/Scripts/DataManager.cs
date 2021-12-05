@@ -77,6 +77,26 @@ public class User
     public List<UserData> userData;
 }
 
+[System.Serializable]
+public class FurnitureData
+{
+    public string engName;
+    public string thName;
+    public List<Furniture> furnitures;
+    public string dec;
+
+    [System.Serializable]
+    public class Furniture
+    {
+        public string name;
+        public Sprite sprite;
+        public Sprite spriteToShow;
+        public int price;
+        public FurnitureStyle style;
+        public FurnitureType type;
+    }
+}
+
 public enum IngredientType {SHOULD_NOT_EAT, CAN_EAT}
 public enum PlayDifference { NORMAL, HARD}
 public enum ItemType { FIRE, BROOM, CROWBAR }
@@ -84,6 +104,8 @@ public enum ObstacleType { ICE, SPIDERWEB, WOODENBOARD }
 public enum BonusType { X1 = 1, X2 = 2, X3 = 3, X4 = 4 }
 public enum FridgeShelfStyle { EZ1_5, EZ6_10, EZ11_15, EZ16_20, EZ21_25, EZ26_30, EZ31_35, EZ36_40, EZ41_45, EZ46_50,
                                H1_5, H6_10, H11_15, H16_20, H21_25, H26_30, H31_35, H36_40, H41_45, H46_50 }
+public enum FurnitureStyle { EMPTY, NOMAL, JAPAN, CASTLE, PIRATES}
+public enum FurnitureType { BG, Carpet, Desk, Frame, Shelf, Sofa, Standy, Window}
 
 public class DataManager : MonoBehaviour
 {
@@ -99,6 +121,8 @@ public class DataManager : MonoBehaviour
     [SerializeField] List<ComboDifference> comboDiff;
 
     [SerializeField] List<FridgeShelf> fridgeShelfs;
+
+    [SerializeField] List<FurnitureData> furnitureDatas;
 
     public List<IngredientData> GetIngredientData(IngredientType type)
     {
@@ -179,5 +203,10 @@ public class DataManager : MonoBehaviour
             }
         }
         return 100000;
+    }
+
+    public FurnitureData.Furniture GetFurnitureData(FurnitureStyle style, FurnitureType type)
+    {
+        return furnitureDatas[(int)style].furnitures[(int)type];
     }
 }

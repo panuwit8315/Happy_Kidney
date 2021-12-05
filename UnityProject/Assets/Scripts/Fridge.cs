@@ -147,7 +147,7 @@ public class Fridge : MonoBehaviour //default
             {
                 SoundManager.GetInstance().PlaySFXOneShot(SfxClipName.CLICK02);
                 ui.UIHint().Close();
-                ui.UIGamePlay().SetHintNoft(false);
+                //ui.UIGamePlay().SetHintNoft(false);
                 game.timer.isRunTime = true;
                 game.rayCast.enabled = true;
 
@@ -159,7 +159,7 @@ public class Fridge : MonoBehaviour //default
                 }
             });
         }
-        else if (fridgeLv == dataM.GetFristLevelObstacle() && playDiff == PlayDifference.NORMAL) // && PlayerPrefs.GetString("TutorialComplete","No")!="Yes"); //OpenTutorialUI
+        else if (fridgeLv == dataM.GetFristLevelObstacle() && playDiff == PlayDifference.NORMAL && PlayerPrefs.GetString("TutorialComplete","No")!="Yes") //OpenTutorialUI
         {
             print("fridgeLv=" + fridgeLv + "; GetFristLevelObstacle=" + dataM.GetFristLevelObstacle());
             PlayerPrefs.SetInt("TutorialStep", 9);

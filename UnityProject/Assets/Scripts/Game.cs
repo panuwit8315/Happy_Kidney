@@ -15,6 +15,7 @@ public class Game : MonoBehaviour
     public DataManager dataManager;
     public Timer timer;
     public bool isTestting;
+    public SpriteRenderer bg;
 
     UIManager ui;
     public SceneState scene;
