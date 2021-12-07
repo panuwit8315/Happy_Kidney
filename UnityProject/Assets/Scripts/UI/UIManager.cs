@@ -29,6 +29,7 @@ public class UIManager : MonoBehaviour
     private UITutorial uiTutorial;
     private UIThrowAway uiThrowAway;
     private UIInputName uiInputName;
+    private UIInfo uiInfo;
     public UIGamePlay UIGamePlay() { return uiGamePlay; } //Game.GetInstance().fridgeSpawner.diff
     public UILobby UILobby() { return uiLobby; }
     public UIEndGame UIEndGame() { return uiEndGame; }
@@ -39,6 +40,7 @@ public class UIManager : MonoBehaviour
     public UITutorial UITutorial() { return uiTutorial; }
     public UIThrowAway UIThrowAway() { return uiThrowAway; }
     public UIInputName UIInputName() { return uiInputName; }
+    public UIInfo UIInfo() { return uiInfo; }
 
     public void OpenGamePlayUI()//PlayDifference currentDiff)
     {
@@ -183,7 +185,7 @@ public class UIManager : MonoBehaviour
     {
         //if (GetComponentInChildren<UIInputName>() != null) return;
 
-        GameObject g = SpawnObj("Prefabs/UI/UIInputName"); print("OpenInputNameUI");
+        GameObject g = SpawnObj("Prefabs/UI/UIInputName"); //print("OpenInputNameUI");
         if (g == null) return;
         g.GetComponent<UIInputName>().Open();
         uiInputName = g.GetComponent<UIInputName>();
@@ -191,6 +193,18 @@ public class UIManager : MonoBehaviour
     public void CloseUI(UIInputName ui)
     {
         uiInputName = null;
+    }
+
+    public void OpenInfoUI()
+    {
+        GameObject g = SpawnObj("Prefabs/UI/UIInfo");
+        if (g == null) return;
+        g.GetComponent<UIInfo>().Open();
+        uiInfo = g.GetComponent<UIInfo>();
+    }
+    public void CloseUI(UIInfo ui)
+    {
+        uiInfo = null;
     }
 
     private GameObject SpawnObj(string path)

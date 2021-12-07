@@ -28,6 +28,7 @@ public class UILobby : MonoBehaviour, IUI
     SoundManager sound;
     public void Open()
     {
+        GetComponent<Animator>().SetTrigger("FadeInFur");
         game = Game.GetInstance();
         sound = SoundManager.GetInstance();
         game.scene = SceneState.LOBBY;
@@ -54,7 +55,7 @@ public class UILobby : MonoBehaviour, IUI
         infoBtn?.onClick.AddListener(() =>
         {
             sound.PlaySFXOneShot(SfxClipName.CLICK02);
-            //
+            UIManager.GetUI().OpenInfoUI();
         });
         closeShopBtn?.onClick.AddListener(() =>
         {
@@ -83,6 +84,7 @@ public class UILobby : MonoBehaviour, IUI
     public void Close()
     {
         GetComponent<Animator>().SetTrigger("MoveOut");
+        GetComponent<Animator>().SetTrigger("FadeOutFur");
         Invoke("DestroyObj",0.5f);
     }
 
