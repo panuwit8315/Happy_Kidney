@@ -18,6 +18,7 @@ public class UILobby : MonoBehaviour, IUI
     [SerializeField] Text bonusTx;
     [SerializeField] GameObject[] furObj;
     [SerializeField] int[] myFur;
+    [SerializeField] int curentBonus;
 
     [Header("Buy Panel")]
     [SerializeField] Text priceTx;
@@ -139,6 +140,16 @@ public class UILobby : MonoBehaviour, IUI
         print("furnitureBonus:" + furnitureBonus);
         bonusTx.text = "คะแนน +" + furnitureBonus + "%";
         PlayerPrefs.SetInt("FurnitureBonus", furnitureBonus);
+
+        //if (!skipLoad)
+        //{
+            if(curentBonus < minFurniture)
+            {
+                GetComponent<Animator>().SetTrigger("BonusFadeIn");
+                curentBonus = minFurniture;
+                Debug.LogWarning("BusnusFadeIn");
+            }
+        //}
     }
 
     public void OpenBuyPanel(FurnitureData.Furniture nextFurniture)

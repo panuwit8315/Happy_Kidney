@@ -1614,6 +1614,85 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5879959697568085463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2542132184061402708}
+  - component: {fileID: 3789228641181664791}
+  - component: {fileID: 7115414643299653142}
+  m_Layer: 5
+  m_Name: DetailText (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2542132184061402708
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879959697568085463}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5309169963642776379}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 228, y: -268.73}
+  m_SizeDelta: {x: 298.5287, y: 489.39}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3789228641181664791
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879959697568085463}
+  m_CullTransparentMesh: 1
+--- !u!114 &7115414643299653142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879959697568085463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: c9e901d4aa311f54394d85260def3954, type: 3}
+    m_FontSize: 51
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 51
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: "\u0E2D\u0E48\u0E2D\u0E19\u0E41\u0E01\u0E49\u0E27\r\n\u0E01\u0E30\u0E01\u0E32\r\n\u0E1B\u0E23\u0E30\u0E17\u0E32\u0E19\u0E1E\u0E23\u0E28\u0E31\u0E01\u0E14\u0E34\u0E4C\r\n\u0E01\u0E34\u0E15\u0E15\u0E34\u0E1E\u0E23\u0E23\u0E13\u0E23\u0E32\u0E22\r\n\u0E42\u0E25\u0E2B\u0E30\u0E18\u0E23\u0E23\u0E21\r\n\u0E1A\u0E38\u0E29\u0E2A\u0E32\u0E22\r\n\u0E04\u0E38\u0E13\u0E21\u0E32\r\n\u0E1A\u0E38\u0E29\u0E01\u0E23\u0E32\u0E19\u0E38\u0E42\u0E15\r\n\u0E01\u0E1A\u0E02\u0E38\u0E19\u0E17\u0E14"
 --- !u!1 &6645493808462519034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1648,7 +1727,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9, y: -268.73}
+  m_AnchoredPosition: {x: -3.1095152, y: -268.73}
   m_SizeDelta: {x: 600.31, y: 489.39}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3315564541513527250
@@ -1692,17 +1771,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u0E19\u0E32\u0E22            \u0E20\u0E32\u0E19\u0E38\u0E27\u0E34\u0E0A\u0E0D\u0E4C       
-    \u0E2D\u0E48\u0E2D\u0E19\u0E41\u0E01\u0E49\u0E27\r\n\u0E19\u0E32\u0E22           
-    \u0E2A\u0E23\u0E27\u0E34\u0E0A\u0E0D\u0E4C          \u0E01\u0E30\u0E01\u0E32\r\n\u0E19\u0E32\u0E22           
-    \u0E20\u0E39\u0E2A\u0E34\u0E17\u0E18\u0E34\u0E23\u0E31\u0E0A\u0E15\u0E4C      
-    \u0E1B\u0E23\u0E30\u0E17\u0E32\u0E19\u0E1E\u0E23\u0E28\u0E31\u0E01\u0E14\u0E34\u0E4C\r\n\u0E19\u0E32\u0E22           
-    \u0E13\u0E31\u0E10\u0E0A\u0E19\u0E19         \u0E01\u0E34\u0E15\u0E15\u0E34\u0E1E\u0E23\u0E23\u0E13\u0E23\u0E32\u0E22\r\n\u0E19\u0E32\u0E22           
-    \u0E18\u0E19\u0E01\u0E24\u0E15          \u0E42\u0E25\u0E2B\u0E30\u0E18\u0E23\u0E23\u0E21\r\n\u0E19\u0E32\u0E22           
-    \u0E18\u0E32\u0E23\u0E32             \u0E1A\u0E38\u0E29\u0E2A\u0E32\u0E22\r\n\u0E19\u0E32\u0E22           
-    \u0E08\u0E31\u0E01\u0E23\u0E1E\u0E23\u0E23\u0E14\u0E34\u0E4C       \u0E04\u0E38\u0E13\u0E21\u0E32\r\n\u0E19\u0E32\u0E07\u0E2A\u0E32\u0E27    
-    \u0E1A\u0E38\u0E29\u0E01\u0E23\u0E13\u0E4C         \u0E1A\u0E38\u0E29\u0E01\u0E23\u0E32\u0E19\u0E38\u0E42\u0E15\r\n\u0E19\u0E32\u0E07\u0E2A\u0E32\u0E27    
-    \u0E28\u0E34\u0E23\u0E34\u0E01\u0E31\u0E25\u0E22\u0E32         \u0E01\u0E1A\u0E02\u0E38\u0E19\u0E17\u0E14"
+  m_Text: "\u0E19\u0E32\u0E22            \u0E20\u0E32\u0E19\u0E38\u0E27\u0E34\u0E0A\u0E0D\u0E4C\n\u0E19\u0E32\u0E22           
+    \u0E2A\u0E23\u0E27\u0E34\u0E0A\u0E0D\u0E4C    \n\u0E19\u0E32\u0E22           
+    \u0E20\u0E39\u0E2A\u0E34\u0E17\u0E18\u0E34\u0E23\u0E31\u0E0A\u0E15\u0E4C    \n\u0E19\u0E32\u0E22           
+    \u0E13\u0E31\u0E10\u0E0A\u0E19\u0E19  \n\u0E19\u0E32\u0E22            \u0E18\u0E19\u0E01\u0E24\u0E15 
+    \n\u0E19\u0E32\u0E22            \u0E18\u0E32\u0E23\u0E32   \n\u0E19\u0E32\u0E22           
+    \u0E08\u0E31\u0E01\u0E23\u0E1E\u0E23\u0E23\u0E14\u0E34\u0E4C   \n\u0E19\u0E32\u0E07\u0E2A\u0E32\u0E27    
+    \u0E1A\u0E38\u0E29\u0E01\u0E23\u0E13\u0E4C   \n\u0E19\u0E32\u0E07\u0E2A\u0E32\u0E27    
+    \u0E28\u0E34\u0E23\u0E34\u0E01\u0E31\u0E25\u0E22\u0E32   "
 --- !u!1 &7055332996544012581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,7 +1796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5309169963642776379
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1735,6 +1811,7 @@ RectTransform:
   - {fileID: 1370395738567781756}
   - {fileID: 157439733803098608}
   - {fileID: 4359368635138046991}
+  - {fileID: 2542132184061402708}
   m_Father: {fileID: 9140541458469970433}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
