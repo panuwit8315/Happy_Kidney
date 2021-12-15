@@ -44,10 +44,11 @@ public class UILeaderboard : MonoBehaviour, IUI
 
         if (string.IsNullOrEmpty(playerTag))
         {
-            playerTag = playerName + "#" + System.DateTime.Now.ToString("s");
+            //playerTag = playerName + "#" + System.DateTime.Now.ToString("s");
+            playerTag = playerName + "#" + UnityEngine.Random.Range(0, 1000000);
             PlayerPrefs.SetString("PlayerTag",playerTag);
-        }       
-        
+        }
+
         scoreGame = game.fridgeSpawner.GetScore();
        
         closeBtn.onClick.AddListener(() =>

@@ -108,12 +108,13 @@ public class UIManager : MonoBehaviour
         uiHint = g.GetComponent<UIHint>();
 
         //เริ่มนับเวลา
-        startTime = System.DateTime.UtcNow;
+        //startTime = System.DateTime.UtcNow;
     }
     public void CloseUI(UIHint ui)
     {
         uiHint = null;
-
+        /*
+         *
         //ทำให้หยุดนับเวลาและเซ็ตไว้ในค่า ts
         stopTime = System.DateTime.UtcNow;
         System.TimeSpan ts = stopTime - startTime;
@@ -122,6 +123,8 @@ public class UIManager : MonoBehaviour
         AnalyticsResult analyticsResult = Analytics.CustomEvent("OpenHint", new Dictionary<string, object> { { "Seconds", ts.Seconds.ToString() } });
         Debug.Log("analyticResult(OpenHint): " + analyticsResult);
         //Debug.Log(ts);
+        *
+        */
     }
 
     public void OpenLeaderboardUI()

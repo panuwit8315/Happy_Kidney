@@ -32,8 +32,10 @@ public class UIInputName : MonoBehaviour, IUI
     void OnClickStartBtn()
     {
         string inputStr = inputField.text;
-        inputField.text = "";
+        
         print(inputStr);
+        outputTx.text = inputStr;
+
         if (string.IsNullOrEmpty(inputStr)) return;
 
         if(inputStr.Length > 12)
@@ -42,12 +44,22 @@ public class UIInputName : MonoBehaviour, IUI
         }
         else
         {
-            string dateTimeStr = DateTime.Now.ToString("s");
-            string playerTag = inputStr + "#" + dateTimeStr; print(playerTag);
+            outputTx.text = "ตั้งชื่อสำเร็จ";
+            //string dateTimeStr = DateTime.UtcNow.ToString("s");
+            //outputTx.text = "รับเวลาสำเร็จ";
+            int ranID = UnityEngine.Random.Range(0, 1000000);
+            outputTx.text = "สุ่มไอดีประจำตัวสำเร็จ";
+            string playerTag = inputStr + "#" + ranID; //print(playerTag);
+            outputTx.text = "สร้างแท็กประจำตัวสำเร็จ";
             PlayerPrefs.SetString("PlayerName", inputStr);
+            outputTx.text = "บันทึกชื่อสำเร็จ";
             PlayerPrefs.SetString("PlayerTag", playerTag);
+            outputTx.text = "บันทึกแท็กสำเร็จ";
             Close();
-            UIManager.GetUI().OpenLobbyUI();          
+            outputTx.text = "ปิด UI นี้";
+            UIManager.GetUI().OpenLobbyUI();
+            outputTx.text = "เปิด UI Lobby";
         }
+        inputField.text = "";
     }
 }
